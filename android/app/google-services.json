@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "84941902659",
+    "project_id": "lev-esf",
+    "storage_bucket": "lev-esf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84941902659:android:ccc1ff1a30d3b1297195f6",
+        "android_client_info": {
+          "package_name": "com.example.levv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84941902659-hhfpi2oseuv67vd7shhi6enfbtga46sn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFqI1taoAJHUW6uPLq35h6gF097xlaRtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84941902659-hhfpi2oseuv67vd7shhi6enfbtga46sn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
