@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:levv/view/splash/TelaSplash.dart';
 
+import 'package:flutter/material.dart';
 import '../../../helper/AppColors.dart';
 
 class NameApp extends StatelessWidget {
@@ -11,7 +10,7 @@ class NameApp extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.only(bottom: 8),
       child: Text(
-        TelaSplash.APP_NAME,
+        "LEVV",
         style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 40,

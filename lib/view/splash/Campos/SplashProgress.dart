@@ -9,7 +9,7 @@ class SplashProgress extends StatelessWidget {
   const SplashProgress({Key? key}) : super(key: key);
 
   static Timer iniciarProgresso(BuildContext context) {
-    return Timer(Duration(seconds: 5), () async {
+    return Timer(Duration(seconds: 3), () async {
       final bool usuarioEstaCadastrdo =
           await PreferencesLevv.usuarioEstaCadastrado();
 

@@ -17,4 +17,9 @@ class MeioDeTransporte{
   setSelectedMeioDeTransporte(int meioDeTransporte){
     selectedMeioDeTransporte = meioDeTransporte;
   }
+
+  getSelectedMeioDeTransporte(){
+    return selectedMeioDeTransporte;
+  }
+
 }

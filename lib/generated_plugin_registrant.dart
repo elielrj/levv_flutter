@@ -19,5 +19,4 @@ void registerPlugins(Registrar registrar) {
   FirebaseCoreWeb.registerWith(registrar);
   SharedPreferencesPlugin.registerWith(registrar);
   registrar.registerMessageHandler();
-
 }

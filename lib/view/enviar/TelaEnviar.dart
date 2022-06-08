@@ -1,14 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:levv/helper/AppColors.dart';
-import 'package:levv/view/enviar/CampoButtonEnviarPedido.dart';
-import 'package:levv/view/enviar/CampoRotas.dart';
-import 'package:levv/view/enviar/CampoValorDoPedido.dart';
-
-import '../../model/peso/Peso.dart';
-import 'CampoButtonLimparPedido.dart';
-import 'CompoMeioDeTransporte.dart';
-import 'CompoPeso.dart';
-import 'CompoVolume.dart';
+import 'package:levv/view/enviar/campos/CampoButtonEnviarPedido.dart';
+import 'package:levv/view/enviar/campos/CampoValorDoPedido.dart';
+import 'campos/CampoButtonLimparPedido.dart';
+import 'campos/CampoMeioDeTransporte.dart';
+import 'campos/CampoPeso.dart';
+import 'campos/CampoRotas.dart';
+import 'campos/CampoVolume.dart';
 
 class TelaEnviar extends StatefulWidget {
   const TelaEnviar({Key? key}) : super(key: key);
@@ -31,16 +30,21 @@ class _TelaEnviarState extends State<TelaEnviar> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CompoPeso(),
-              CompoVolume(),
-              CompoMeioDeTransporte(),
-              CampoRotas(),
-              CampoValorDoPedido(),
-              Row(
-                children: const [
-                  CampoButtonEnviarPedido(),
-                  CampoButtonLimparPedido(),
-                ],
+              CampoPeso(),
+              const CampoVolume(),
+              const CampoMeioDeTransporte(),
+              const CampoRotas(),
+              const CampoValorDoPedido(),
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    CampoButtonEnviarPedido(),
+                    CampoButtonLimparPedido(),
+                  ],
+                ),
               )
             ],
           ),

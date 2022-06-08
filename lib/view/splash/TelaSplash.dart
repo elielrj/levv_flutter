@@ -12,9 +12,6 @@ import 'Campos/SplashProgress.dart';
 class TelaSplash extends StatefulWidget {
   const TelaSplash({Key? key}) : super(key: key);
 
-  static const String APP_NAME = "LEVV";
-  static const String APP_VERSAO = "Versão 2.0";
-
   @override
   State<TelaSplash> createState() => _TelaSplashState();
 }
