@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:levv/view/frontend/ColorsLevv.dart';
-import '../acompanhar/TelaAcompanhar.dart';
+import 'package:levv/view/frontend/ImageLevv.dart';
+import 'package:levv/view/frontend/RouteLevv.dart';
+import 'package:levv/view/frontend/TextLevv.dart';
 import '../enviar/TelaEnviar.dart';
 
 class TelaHome extends StatefulWidget {
@@ -22,7 +24,7 @@ class _TelaHomeState extends State<TelaHome> {
             SizedBox(
               width: 10,
             ),
-            Text("LEVV"),
+            Text(TextLevv.NOME_DO_APP),
             SizedBox(
               width: 10,
             ),
@@ -45,7 +47,7 @@ class _TelaHomeState extends State<TelaHome> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Image.asset(
-                      "imagens/logo_levv.png",
+                      ImageLevv.LOGO_DO_APP_LEVV,
                       width: 90,
                     ),
                   ),
@@ -65,13 +67,13 @@ class _TelaHomeState extends State<TelaHome> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.asset("imagens/icon_motocycle_delivery.png", height: 40),
+                          Image.asset(ImageLevv.MOTO_DELIVERY, height: 40),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: const [
                               Text(
-                                "ENTREGAR PRODUTO",
+                                TextLevv.TITULO_ENTREGAR,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -80,7 +82,7 @@ class _TelaHomeState extends State<TelaHome> {
                                     wordSpacing: 3),
                               ),
                               Text(
-                                "Envie e receba seus produtos",
+                                TextLevv.SUB_TITULO_ENTREGAR,
                                 style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     color: Colors.black,
@@ -111,13 +113,13 @@ class _TelaHomeState extends State<TelaHome> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.asset("imagens/icon_send_product.png", height: 40),
+                          Image.asset(ImageLevv.SEND_PRODUCT, height: 40),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: const [
                               Text(
-                                "ENVIAR PRODUTO",
+                                TextLevv.TITULO_ENVIAR,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -126,7 +128,7 @@ class _TelaHomeState extends State<TelaHome> {
                                     wordSpacing: 3),
                               ),
                               Text(
-                                "Envie e receba seus produtos",
+                                TextLevv.SUB_TITULO_ENVIAR,
                                 style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     color: Colors.black,
@@ -154,13 +156,13 @@ class _TelaHomeState extends State<TelaHome> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.asset("imagens/icon_track_delivery.png", height: 40),
+                          Image.asset(ImageLevv.TRACK_DELIVERY, height: 40),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: const [
                               Text(
-                                "ACOMPANHAR ENTREGA",
+                                TextLevv.TITULO_ACOMPANHAR,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -169,7 +171,7 @@ class _TelaHomeState extends State<TelaHome> {
                                     wordSpacing: 3),
                               ),
                               Text(
-                                "xxxxx-- acompanhar ou enviar????-- Envie e receba seus produtos",
+                                TextLevv.SUB_TITULO_ACOMPANHAR,
                                 style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     color: Colors.black,
@@ -179,12 +181,12 @@ class _TelaHomeState extends State<TelaHome> {
                           )
                         ],
                       ),
-                      onPressed: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const TelaAcompanhar())),
+                      onPressed: () => Navigator.pushNamed(context,
+                          RouteLevv.TELA_ACOMPANHAR,
                     ),
                   ),
                 ),
-              ],
+                )],
             ),
           )),
       floatingActionButton: FloatingActionButton(
@@ -192,8 +194,7 @@ class _TelaHomeState extends State<TelaHome> {
         elevation: 5,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const TelaEnviar())),
+        onPressed: () => Navigator.pushNamed(context, RouteLevv.TELA_ENVIAR_PEDIDO),
       ),
     );
   }

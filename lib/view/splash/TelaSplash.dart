@@ -5,9 +5,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:levv/controller/usuario/UsuarioController.dart';
 import 'package:levv/view/frontend/ColorsLevv.dart';
-import '../cadastrar/celular/TelaCadastrarCelular.dart';
-import '../home/TelaHome.dart';
-
+import 'package:levv/view/frontend/ImageLevv.dart';
+import 'package:levv/view/frontend/RouteLevv.dart';
+import 'package:levv/view/frontend/TextLevv.dart';
 
 class TelaSplash extends StatefulWidget {
   const TelaSplash({Key? key}) : super(key: key);
@@ -17,31 +17,18 @@ class TelaSplash extends StatefulWidget {
 }
 
 class _TelaSplashState extends State<TelaSplash> {
-
   final UsuarioController _usuarioController = UsuarioController();
 
   _inicializarCircularProgressIndicator() {
     Timer(Duration(seconds: 3), () async {
-
-
-
       final bool celularEstaCadastrado =
-      await _usuarioController.verificarSeCelularEstaCadastrado();
+          await _usuarioController.verificarSeCelularEstaCadastrado();
 
       if (celularEstaCadastrado) {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const TelaHome(),
-            ));
+        Navigator.pushReplacementNamed(context, RouteLevv.TELA_HOME);
       } else {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              //builder: (context) => const TelaLogin(),
-              builder: (context) => const TelaCadastrarCelular(),
-
-            ));
+        Navigator.pushReplacementNamed(
+            context, RouteLevv.TELA_CADASTRAR_ACOMAPANHADOR_DE_PEDIDO);
       }
     });
   }
@@ -67,14 +54,14 @@ class _TelaSplashState extends State<TelaSplash> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 32),
                 child: Image.asset(
-                  "imagens/logo_levv.png",
+                  ImageLevv.LOGO_DO_APP_LEVV,
                   width: 90,
                 ),
               ),
               const Padding(
                 padding: EdgeInsets.only(bottom: 8),
                 child: Text(
-                  "LEVV",
+                  TextLevv.NOME_DO_APP,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 40,
