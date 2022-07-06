@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 
-import '../../helper/AppColors.dart';
+import 'package:flutter/material.dart';
+import 'package:levv/view/frontend/ColorsLevv.dart';
+
 
 class TelaAcompanhar extends StatefulWidget {
   const TelaAcompanhar({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class _TelaAcompanharState extends State<TelaAcompanhar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.APP_FUNDO,
+        backgroundColor: ColorsLevv.FUNDO,
         appBar: AppBar(
           title: const Text("Acompanhar um produto"),
         ),

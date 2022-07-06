@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 
-import '../../helper/AppColors.dart';
+import 'package:flutter/material.dart';
+import 'package:levv/view/frontend/ColorsLevv.dart';
 
 
 class TelaEntregar extends StatefulWidget {
@@ -17,7 +17,7 @@ class _TelaEntregarState extends State<TelaEntregar> {
         appBar: AppBar(
           title: const Text("Entregar um produto"),
         ),
-      backgroundColor: AppColors.APP_FUNDO,
+      backgroundColor: ColorsLevv.FUNDO,
       body: Container(child:Text("Tela Entregar")));
   }
 }

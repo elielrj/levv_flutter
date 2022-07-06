@@ -1,13 +1,13 @@
+
 // ignore_for_file: import_of_legacy_library_into_null_safe
 
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:levv/helper/AppColors.dart';
-import 'package:levv/helper/PreferencesLevv.dart';
-import 'package:levv/view/login/Campos/CampoLogon.dart';
-import 'package:levv/view/splash/Campos/NameApp.dart';
-import 'package:levv/view/splash/Campos/VersionApp.dart';
+import 'package:levv/controller/usuario/UsuarioController.dart';
+import 'package:levv/view/frontend/ColorsLevv.dart';
+import '../cadastrar/celular/TelaCadastrarCelular.dart';
+import '../home/TelaHome.dart';
 
-import 'Campos/SplashProgress.dart';
 
 class TelaSplash extends StatefulWidget {
   const TelaSplash({Key? key}) : super(key: key);
@@ -17,27 +17,74 @@ class TelaSplash extends StatefulWidget {
 }
 
 class _TelaSplashState extends State<TelaSplash> {
+
+  final UsuarioController _usuarioController = UsuarioController();
+
+  _inicializarCircularProgressIndicator() {
+    Timer(Duration(seconds: 3), () async {
+
+
+
+      final bool celularEstaCadastrado =
+      await _usuarioController.verificarSeCelularEstaCadastrado();
+
+      if (celularEstaCadastrado) {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TelaHome(),
+            ));
+      } else {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              //builder: (context) => const TelaLogin(),
+              builder: (context) => const TelaCadastrarCelular(),
+
+            ));
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    SplashProgress.iniciarProgresso(context);
+    _inicializarCircularProgressIndicator();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.APP_FUNDO,
-      body: Container(
-        color: AppColors.APP_FUNDO,
-        padding: const EdgeInsets.all(16),
-        child: Center(
+      backgroundColor: ColorsLevv.FUNDO,
+      body: Center(
+        child: Container(
+          color: ColorsLevv.FUNDO,
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              CampoLogon(),
-              NameApp(),
-              VersionApp(),
-              SplashProgress(),
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 32),
+                child: Image.asset(
+                  "imagens/logo_levv.png",
+                  width: 90,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 8),
+                child: Text(
+                  "LEVV",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                      color: ColorsLevv.TEXTO),
+                ),
+              ),
+              const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Colors.white),
+                strokeWidth: 5,
+              ),
             ],
           ),
         ),
