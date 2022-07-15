@@ -1,13 +1,12 @@
-
-// ignore_for_file: import_of_legacy_library_into_null_safe
-
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:levv/controller/usuario/UsuarioController.dart';
-import 'package:levv/view/frontend/ColorsLevv.dart';
-import 'package:levv/view/frontend/ImageLevv.dart';
-import 'package:levv/view/frontend/RouteLevv.dart';
-import 'package:levv/view/frontend/TextLevv.dart';
+import 'package:levv/view/frontend/colors_levv.dart';
+import 'package:levv/view/frontend/image_levv.dart';
+import 'package:levv/view/frontend/route_levv.dart';
+import 'package:levv/view/frontend/text_levv.dart';
+import 'package:levv/view/home/tela_home.dart';
+import 'package:levv/view/splash/buscador_de_usuario.dart';
+import '../../model/bo/usuario/Usuario.dart';
 
 class TelaSplash extends StatefulWidget {
   const TelaSplash({Key? key}) : super(key: key);
@@ -17,21 +16,10 @@ class TelaSplash extends StatefulWidget {
 }
 
 class _TelaSplashState extends State<TelaSplash> {
-  final UsuarioController _usuarioController = UsuarioController();
 
-  _inicializarCircularProgressIndicator() {
-    Timer(Duration(seconds: 3), () async {
-      final bool celularEstaCadastrado =
-          await _usuarioController.verificarSeCelularEstaCadastrado();
+  final BuscadorDeUsuario _buscadorDeUsuario = BuscadorDeUsuario();
 
-      if (celularEstaCadastrado) {
-        Navigator.pushReplacementNamed(context, RouteLevv.TELA_HOME);
-      } else {
-        Navigator.pushReplacementNamed(
-            context, RouteLevv.TELA_CADASTRAR_ACOMAPANHADOR_DE_PEDIDO);
-      }
-    });
-  }
+  late final Usuario _usuario;
 
   @override
   void initState() {
@@ -45,7 +33,6 @@ class _TelaSplashState extends State<TelaSplash> {
       backgroundColor: ColorsLevv.FUNDO,
       body: Center(
         child: Container(
-          color: ColorsLevv.FUNDO,
           padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -77,5 +64,44 @@ class _TelaSplashState extends State<TelaSplash> {
         ),
       ),
     );
+  }
+
+  //1
+  _inicializarCircularProgressIndicator() {
+    Timer(const Duration(seconds: 3), () async {
+
+      if (await _verificarSeCelularEstaCadastrado()) {
+
+        await _buscarUsuario();
+
+        await _navegarParaTelaHome(usuario: _usuario);
+
+      } else {
+        await _navegarParaTelaCadastrarAcompanhadorDePedido();
+      }
+
+    });
+  }
+
+  //2
+  Future<bool> _verificarSeCelularEstaCadastrado() async {
+    return await _buscadorDeUsuario.verificarSeUsuarioEstaCadastrado();
+  }
+
+  //3
+  _navegarParaTelaHome({required Usuario usuario}) {
+    //Navigator.pushReplacementNamed(context, RouteLevv.TELA_HOME);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TelaHome(usuario: _usuario)));
+  }
+
+  //4
+  _navegarParaTelaCadastrarAcompanhadorDePedido() {
+    Navigator.pushReplacementNamed(
+        context, RouteLevv.TELA_CADASTRAR_ACOMPANHADOR_DE_PEDIDO);
+  }
+
+  //5
+  Future<void> _buscarUsuario() async {
+    _usuario = await _buscadorDeUsuario.buscarUsuarioCadastrado();
   }
 }

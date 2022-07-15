@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:levv/view/frontend/ColorsLevv.dart';
+import 'package:levv/view/frontend/colors_levv.dart';
 
 
 class TelaEntregar extends StatefulWidget {

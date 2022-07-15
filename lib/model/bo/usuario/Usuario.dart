@@ -5,24 +5,56 @@ import 'package:levv/model/bo/usuario/TipoDeUsuario.dart';
 import '../endereco/Endereco.dart';
 
 abstract class Usuario {
-  String celular;
-  bool status;
+  late String _celular;
+  late bool _status;
 
-  TipoDeUsuario tipoDeUsuario;
+  late TipoDeUsuario _tipoDeUsuario;
 
-  Endereco enderecoCasa;
-  Endereco enderecoTrabalho;
-  List<Endereco> enderecosFavoritos;
+  late Endereco _enderecoCasa;
+  late Endereco _enderecoTrabalho;
+  late List<Endereco> _enderecosFavoritos;
 
-  List<Pedido> listaDePedidos;
+  late List<Pedido> _listaDePedidos;
 
-  Usuario({
-    required this.celular,
-    required this.status,
-    required this.tipoDeUsuario,
-    required this.enderecoCasa,
-    required this.enderecoTrabalho,
-    required this.enderecosFavoritos,
-    required this.listaDePedidos
-  });
+  String get celular => _celular;
+
+  bool get status => _status;
+
+  TipoDeUsuario get tipoDeUsuario => _tipoDeUsuario;
+
+  Endereco get enderecoCasa => _enderecoCasa;
+
+  Endereco get enderecoTrabalho => _enderecoTrabalho;
+
+  List<Endereco> get enderecosFavoritos => _enderecosFavoritos;
+
+  set celular(String value) {
+    _celular = value;
+  }
+
+  List<Pedido> get listaDePedidos => _listaDePedidos;
+
+  set status(bool value) {
+    _status = value;
+  }
+
+  set tipoDeUsuario(TipoDeUsuario value) {
+    _tipoDeUsuario = value;
+  }
+
+  set enderecoCasa(Endereco value) {
+    _enderecoCasa = value;
+  }
+
+  set enderecoTrabalho(Endereco value) {
+    _enderecoTrabalho = value;
+  }
+
+  set enderecosFavoritos(List<Endereco> value) {
+    _enderecosFavoritos = value;
+  }
+
+  set listaDePedidos(List<Pedido> value) {
+    _listaDePedidos = value;
+  }
 }

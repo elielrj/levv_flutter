@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:levv/model/bo/endereco/Endereco.dart';
+import 'package:levv/model/bo/endereco/TipoDeImovel.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'dart:async';
@@ -14,6 +15,7 @@ class PathProviderLevv extends StatefulWidget {
 }
 
 class _PathProviderLevvState extends State<PathProviderLevv> {
+
   List _listaDeEnderecos = [];
 
   Future<File> _getFile() async {
@@ -21,11 +23,11 @@ class _PathProviderLevvState extends State<PathProviderLevv> {
     return File("${diretorio.path}/dados.json");
   }
 
-  _salvarArquivo(Endereco endereco, String tipoDoEndereco) async {
+  _salvarArquivo(Endereco endereco, TipoDeImovel tipoDoEndereco) async {
     var arquivo = await _getFile();
 
     Map<String, dynamic> endereco = Map();
-    endereco[tipoDoEndereco];
+    endereco[tipoDoEndereco.tipo];
     endereco[endereco];
     _listaDeEnderecos.add(endereco);
 

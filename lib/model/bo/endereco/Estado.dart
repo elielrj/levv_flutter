@@ -2,13 +2,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 class Estado{
 
-  int _id;
-  String _nome;
-  String _sigla;
-  bool _status;
-  static final Estado VAZIO = Estado(0, "", "", false);
 
-  Estado(this._id, this._nome, this._sigla, this._status);
+  late String _nome;
+  late String _sigla;
+  late bool _status;
+
+  static final Estado VAZIO = EstadoBuilder().comNome("").status(false).comSigla("").create();
+
+
 
   bool get status => _status;
 
@@ -28,11 +29,7 @@ class Estado{
     _nome = value;
   }
 
-  int get id => _id;
 
-  set id(int value) {
-    _id = value;
-  }
 
   @override
   String toString() {
@@ -42,4 +39,36 @@ class Estado{
           _sigla
       ;
   }
+}
+
+class EstadoBuilder{
+
+  static final Estado _estado = Estado();
+
+  EstadoBUilder(){
+    _estado.nome = "";
+    _estado.sigla = "";
+    _estado.status = false;
+  }
+
+  EstadoBuilder comNome(String nome){
+    _estado.nome = nome;
+    return this;
+  }
+
+  EstadoBuilder comSigla(String sigla){
+    _estado.sigla = sigla;
+    return this;
+  }
+
+
+  EstadoBuilder status(bool status){
+    _estado.status = status;
+    return this;
+  }
+
+  Estado create(){
+    return _estado;
+  }
+
 }

@@ -25,5 +25,11 @@ class EstadoDAO extends CrudDAO<Estado>{
   void update(Estado estado) {
     // TODO: implement update
   }
+
+  @override
+  Estado retriveForPhone(String phone) {
+    // TODO: implement retriveForPhone
+    throw UnimplementedError();
+  }
   
 }

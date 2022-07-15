@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
 
-class TipoDeImovel{
+class TipoDeImovel {
 
-  String _tipo;
+  late String _tipo;
   static const String CASA = "Casa";
   static const String APT = "Apt";
   static const String LOJA = "Loja";
-  static final VAZIO = TipoDeImovel("");
+  static final VAZIO = TipoDeImovelBuilder().create();
 
-  TipoDeImovel(this._tipo);
 
   String get tipo => _tipo;
 
   set tipo(String value) {
     _tipo = value;
+  }
+}
+
+class TipoDeImovelBuilder {
+  static final TipoDeImovel _tipoDeImovel = TipoDeImovel();
+
+  TipoDeImovelBuilder() {
+    _tipoDeImovel.tipo = TipoDeImovel.CASA;
+  }
+
+  TipoDeImovelBuilder doTipo(String tipo) {
+    _tipoDeImovel.tipo = tipo;
+    return this;
+  }
+
+  TipoDeImovel create() {
+    return _tipoDeImovel;
   }
 }

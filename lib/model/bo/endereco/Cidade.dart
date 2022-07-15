@@ -4,13 +4,13 @@ import 'package:levv/model/bo/endereco/Estado.dart';
 
 class Cidade{
 
-  int _id;
-  String _nome;
-  bool _status;
-  Estado _estado;
-  static final Cidade VAZIO = Cidade(0, '',false,Estado.VAZIO);
+  late String _nome;
+  late bool _status;
+  late Estado _estado;
 
-  Cidade(this._id, this._nome, this._status, this._estado);
+  static final Cidade VAZIO = CidadeBuilder().create();
+
+
 
   bool get status => _status;
 
@@ -30,11 +30,7 @@ class Cidade{
     _estado = value;
   }
 
-  int get id => _id;
 
-  set id(int value) {
-    _id = value;
-  }
 
   @override
   String toString() {
@@ -43,4 +39,35 @@ class Cidade{
         _estado.toString()
       ;
   }
+}
+
+class CidadeBuilder{
+
+  static final Cidade _cidade = Cidade();
+
+  CidadeBuilder(){
+    _cidade.nome = "";
+    _cidade.status = false;
+    _cidade.estado = Estado.VAZIO;
+  }
+
+  CidadeBuilder comNome(String nome){
+    _cidade.nome = nome;
+    return this;
+  }
+
+  CidadeBuilder status(bool status){
+    _cidade.status = status;
+    return this;
+  }
+
+  CidadeBuilder pertenceAoEstado(Estado estado){
+    _cidade.estado = estado;
+    return this;
+  }
+
+  Cidade create(){
+    return _cidade;
+  }
+
 }

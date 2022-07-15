@@ -8,5 +8,6 @@ class ImageLevv{
 
   static const String TRACK_DELIVERY = "imagens/icon_track_delivery.png";
   static const String SEND_PRODUCT = "imagens/icon_send_product.png";
+  static const String REGISTER = "imagens/icon_register.png";
 
 }

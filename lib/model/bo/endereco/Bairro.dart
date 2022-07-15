@@ -5,14 +5,13 @@ import 'Cidade.dart';
 
 class Bairro{
 
-  int _id;
-  String _nome;
-  bool _status;
-  Cidade  _cidade;
+  late String _nome;
+  late bool _status;
+  late Cidade  _cidade;
 
-  static final VAZIO = Bairro(0, "", false, Cidade.VAZIO);
+  static final VAZIO = BairroBuilder().create();
 
-  Bairro(this._id, this._nome, this._status, this._cidade);
+
 
   Cidade get cidade => _cidade;
 
@@ -32,12 +31,6 @@ class Bairro{
     _nome = value;
   }
 
-  int get id => _id;
-
-  set id(int value) {
-    _id = value;
-  }
-
   @override
   String toString() {
     return
@@ -46,5 +39,34 @@ class Bairro{
           ', ' +
           _cidade.toString()
     ;
+  }
+}
+
+class BairroBuilder{
+  static final Bairro _bairro = Bairro();
+
+  BairroBuilder(){
+    _bairro.nome = "";
+    _bairro.status = false;
+    _bairro.cidade = Cidade.VAZIO;
+  }
+
+  BairroBuilder nomeDoBairro(String nome){
+    _bairro.nome = nome;
+    return this;
+  }
+
+  BairroBuilder status(bool status){
+    _bairro.status = status;
+    return this;
+  }
+
+  BairroBuilder pertenceACidade(Cidade cidade){
+    _bairro.cidade = cidade;
+    return this;
+  }
+
+  Bairro create(){
+    return _bairro;
   }
 }

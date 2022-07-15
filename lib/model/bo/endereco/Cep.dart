@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class Cep{
 
-  String _cep;
-  bool _status;
-  static final VAZIO = Cep("", false);
+  late String _cep;
+  late bool _status;
 
-  Cep(this._cep, this._status);
+  static final VAZIO = CepBuilder().create();
+
 
   bool get status => _status;
 
@@ -23,5 +23,29 @@ class Cep{
   @override
   String toString() {
     return 'Cep ' + _cep;
+  }
+}
+
+class CepBuilder{
+
+  static final Cep _cep = Cep();
+
+  CepBuilder(){
+    _cep.cep = "";
+    _cep.status = false;
+  }
+
+  CepBuilder comCep(String cep){
+    _cep.cep = cep;
+    return this;
+  }
+
+  CepBuilder comStatus(bool status){
+    _cep.status= status;
+    return this;
+  }
+
+  Cep create(){
+    return _cep;
   }
 }

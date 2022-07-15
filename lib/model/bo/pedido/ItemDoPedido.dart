@@ -1,51 +1,19 @@
-
 import 'package:flutter/material.dart';
+import 'package:levv/model/bo/endereco/Endereco.dart';
+import 'package:levv/model/bo/pedido/volume.dart';
 
-import '../Endereco/Endereco.dart';
+import 'Peso.dart';
 
-class ItemDoPedido{
+class ItemDoPedido {
 
-  int _ordem;
-  int _quantidade;
-  double _peso;
-  double _volume;
-  bool _coleta;
-  bool _entrega;
+  late int _ordem;
 
-  Endereco _endereco;
 
-  ItemDoPedido(this._ordem, this._quantidade, this._peso, this._volume,
-      this._coleta, this._entrega, this._endereco);
+  late Endereco _coleta;
+  late Endereco _entrega;
 
-  bool get entrega => _entrega;
 
-  set entrega(bool value) {
-    _entrega = value;
-  }
-
-  bool get coleta => _coleta;
-
-  set coleta(bool value) {
-    _coleta = value;
-  }
-
-  double get volume => _volume;
-
-  set volume(double value) {
-    _volume = value;
-  }
-
-  double get peso => _peso;
-
-  set peso(double value) {
-    _peso = value;
-  }
-
-  int get quantidade => _quantidade;
-
-  set quantidade(int value) {
-    _quantidade = value;
-  }
+  static final VAZIO = ItemDoPedidoBuilder().create();
 
   int get ordem => _ordem;
 
@@ -53,9 +21,49 @@ class ItemDoPedido{
     _ordem = value;
   }
 
-  Endereco get endereco => _endereco;
 
-  set endereco(Endereco value) {
-    _endereco = value;
+
+  Endereco get coleta => _coleta;
+
+  set coleta(Endereco value) {
+    _coleta = value;
+  }
+
+  Endereco get entrega => _entrega;
+
+  set entrega(Endereco value) {
+    _entrega = value;
+  }
+}
+
+class ItemDoPedidoBuilder {
+  static final ItemDoPedido _itemDoPedido = ItemDoPedido();
+
+  ItemDoPedidoBuilder() {
+    //todo antes de add a lista de itens, verificar a ordem
+    _itemDoPedido.ordem = 1;
+    _itemDoPedido.coleta = Endereco.VAZIO;
+    _itemDoPedido.entrega = Endereco.VAZIO;
+  }
+
+  ItemDoPedidoBuilder deOrdem(int ordem) {
+    _itemDoPedido.ordem = ordem;
+    return this;
+  }
+
+
+
+  ItemDoPedidoBuilder enderecoDeColeta(Endereco coleta) {
+    _itemDoPedido.coleta = coleta;
+    return this;
+  }
+
+  ItemDoPedidoBuilder enderecoDeEntrega(Endereco entrega) {
+    _itemDoPedido.entrega = entrega;
+    return this;
+  }
+
+  ItemDoPedido create() {
+    return _itemDoPedido;
   }
 }

@@ -7,27 +7,25 @@ import 'package:levv/model/bo/usuario/Usuario.dart';
 import '../pedido/Pedido.dart';
 
 abstract class PessoaJuridica extends Usuario {
-  String cnpj;
-  String nomeFantasiaDaEmpresa;
-  String nomeDaEmpresaDaEmpresa;
+  late String _cnpj;
+  late String _nomeFantasiaDaEmpresa;
+  late String _nomeDaEmpresaDaEmpresa;
 
-  PessoaJuridica(
-      {required String celuar,
-      required bool status,
-      required TipoDeUsuario tipoDeUsuario,
-      required Endereco enderecoCasa,
-      required Endereco enderecoTrabalho,
-      required List<Endereco> enderecosFavoritos,
-      required List<Pedido> listaDePedidos,
-      required this.cnpj,
-      required this.nomeFantasiaDaEmpresa,
-      required this.nomeDaEmpresaDaEmpresa})
-      : super(
-            celular: celuar,
-            status: status,
-            tipoDeUsuario: tipoDeUsuario,
-            enderecoCasa: enderecoCasa,
-            enderecoTrabalho: enderecoTrabalho,
-            enderecosFavoritos: enderecosFavoritos,
-            listaDePedidos: listaDePedidos);
+  String get cnpj => _cnpj;
+
+  set cnpj(String value) {
+    _cnpj = value;
+  }
+
+  String get nomeFantasiaDaEmpresa => _nomeFantasiaDaEmpresa;
+
+  set nomeFantasiaDaEmpresa(String value) {
+    _nomeFantasiaDaEmpresa = value;
+  }
+
+  String get nomeDaEmpresaDaEmpresa => _nomeDaEmpresaDaEmpresa;
+
+  set nomeDaEmpresaDaEmpresa(String value) {
+    _nomeDaEmpresaDaEmpresa = value;
+  }
 }

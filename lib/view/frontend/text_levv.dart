@@ -14,5 +14,15 @@ class TextLevv{
   static const String TITULO_ACOMPANHAR= "ACOMPANHAR ENTREGA";
   static const String SUB_TITULO_ACOMPANHAR = "Rastrei sua entrega";
 
+  static const String ZERO_CARACTER = " caracter";
+  static const String UM_CARACTER = " caracter";
+  static const String VARIOS_CARACTERES = " caracteres";
+  static const String CELULAR = "Celular";
+  static const String LOGIN = "Login";
+  static const String CADASTRAR = "Cadastrar";
+  static const String ROTA = "ROTA";
+  static const String ENDERECO_ENTREGA = "Endereço de entrega";
+  static const String ENDERECO_COLETA = "Endereço de coleta";
+
 
 }

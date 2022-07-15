@@ -6,31 +6,34 @@ import '../pedido/Pedido.dart';
 import '../usuario/TipoDeUsuario.dart';
 
 abstract class PessoaFisica extends Usuario {
-  String nome;
-  String sobrenome;
-  String cpf;
-  DateTime nascimento;
-
-  PessoaFisica(
-      {required String celuar,
-      required bool status,
-      required TipoDeUsuario tipoDeUsuario,
-      required Endereco enderecoCasa,
-      required Endereco enderecoTrabalho,
-      required List<Endereco> enderecosFavoritos,
-      required List<Pedido> listaDePedidos,
-      required this.nome,
-      required this.sobrenome,
-      required this.cpf,
-      required this.nascimento})
-      : super(
-            celular: celuar,
-            status: status,
-            tipoDeUsuario: tipoDeUsuario,
-            enderecoCasa: enderecoCasa,
-            enderecoTrabalho: enderecoTrabalho,
-            enderecosFavoritos: enderecosFavoritos,
-            listaDePedidos: listaDePedidos);
+  late String _nome;
+  late String _sobrenome;
+  late String _cpf;
+  late DateTime _nascimento;
 
 
+
+  String get nome => _nome;
+
+  set nome(String value) {
+    _nome = value;
+  }
+
+  String get sobrenome => _sobrenome;
+
+  set sobrenome(String value) {
+    _sobrenome = value;
+  }
+
+  String get cpf => _cpf;
+
+  set cpf(String value) {
+    _cpf = value;
+  }
+
+  DateTime get nascimento => _nascimento;
+
+  set nascimento(DateTime value) {
+    _nascimento = value;
+  }
 }
