@@ -86,19 +86,18 @@ class Endereco{
   @override
   String toString() {
     return
-      'Endereço\n' +
         _logradouro + ', ' +
           _numero + ', ' +
-            _tipoDeImovel.toString() + ' ' +
-              _complemento + '\n' +
+            _tipoDeImovel.toString()  + ' ' +
+              _complemento +
                 _bairro.toString()
     ;
   }
 }
 
-class EnderecoBuilder{
+class  EnderecoBuilder{
 
-  static final Endereco _endereco = Endereco();
+  static final  Endereco _endereco = Endereco();
 
   EnderecoBuilder(){
     _endereco.descricao = "";
@@ -137,7 +136,7 @@ class EnderecoBuilder{
   }
 
 
-  EnderecoBuilder comTipoDeImovel(TipoDeImovel tipoDeImovel){
+   EnderecoBuilder comTipoDeImovel(TipoDeImovel tipoDeImovel){
     _endereco.tipoDeImovel = tipoDeImovel;
     return this;
   }

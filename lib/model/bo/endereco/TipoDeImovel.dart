@@ -14,6 +14,11 @@ class TipoDeImovel {
   set tipo(String value) {
     _tipo = value;
   }
+
+  @override
+  String toString() {
+    return _tipo;
+  }
 }
 
 class TipoDeImovelBuilder {

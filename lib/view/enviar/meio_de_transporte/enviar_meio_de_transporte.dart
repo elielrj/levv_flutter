@@ -1,5 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:levv/model/bo/meioDeTransprte/MeioDeTransporte.dart';
+import 'package:levv/model/dao/meioDeTransporte/MeioDeTransporteDAO.dart';
+import 'package:levv/view/frontend/text_levv.dart';
 
 import '../../../model/bo/pedido/Pedido.dart';
 
@@ -13,14 +15,18 @@ class EnviarMeioDeTransporte extends StatefulWidget {
 }
 
 class _EnviarMeioDeTransporteState extends State<EnviarMeioDeTransporte> {
+
+   late final List<MeioDeTransporte> _listaDeMeiosDeTransporte;
+
   @override
   Widget build(BuildContext context) {
+
+    _buscarMeiosDeTransporte();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        const Text("MEIO DE TRANSPORTE",
-            style: TextStyle(fontSize: 16)),
-
+        const Text(TextLevv.MEIO_DE_TRANSPORTE, style: TextStyle(fontSize: 16)),
         Card(
           child: DropdownButton(
               underline: Container(
@@ -44,13 +50,24 @@ class _EnviarMeioDeTransporteState extends State<EnviarMeioDeTransporte> {
                 ),
               ],
               onChanged: (value) => setState(() {
-                widget.pedido.meioDeTransporte.descricao = value.toString();
-              })),
-        )
+                    widget.pedido.meioDeTransporte.descricao = value.toString();
+                  })),
+        ),
 
       ],
     );
   }
 
+  Future<void> _buscarMeiosDeTransporte() async {
+    //todo 3 - DAO p/ meio de transp
+    MeioDeTransporteDAO meioDeTransporteDAO = MeioDeTransporteDAO();
+    _listaDeMeiosDeTransporte = await meioDeTransporteDAO.retrive();
+  }
+
+  Widget _menuItem(MeioDeTransporte meioDeTransporte) => DropdownMenuItem(
+        child: Text(meioDeTransporte.descricao),
+        value: meioDeTransporte
+            .buscarValorDoMeioDeTransporte(meioDeTransporte.descricao),
+      );
 
 }

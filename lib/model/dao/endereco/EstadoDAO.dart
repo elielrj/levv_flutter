@@ -5,29 +5,29 @@ import 'package:levv/model/dao/CrudDAO.dart';
 
 class EstadoDAO extends CrudDAO<Estado>{
   @override
-  void create(Estado estado){
+  Future<void> create(Estado estado)async{
     //todo SQLLite
     
   }
 
   @override
-  void delete(Estado estado) {
+  Future<void> delete(Estado estado)async {
     // TODO: implement delete
   }
 
   @override
-  List<Estado> retrive() {
+  Future<List<Estado>> retrive() async{
     // TODO: implement retrive
     throw UnimplementedError();
   }
 
   @override
-  void update(Estado estado) {
+  Future<void> update(Estado estado) async{
     // TODO: implement update
   }
 
   @override
-  Estado retriveForPhone(String phone) {
+  Future<Estado> retriveForPhone(String phone)async {
     // TODO: implement retriveForPhone
     throw UnimplementedError();
   }

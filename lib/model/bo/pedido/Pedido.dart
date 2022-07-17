@@ -36,9 +36,9 @@ class Pedido {
     _usuarioDoPedido = value;
   }
 
-  List<ItemDoPedido> get itens => _itensDoPedido;
+  List<ItemDoPedido> get itensDoPedido => _itensDoPedido;
 
-  set itens(List<ItemDoPedido> value) {
+  set itensDoPedido(List<ItemDoPedido> value) {
     _itensDoPedido = value;
   }
 
@@ -94,12 +94,6 @@ class Pedido {
 
   set usuarioDoPedido(Usuario value) {
     _usuarioDoPedido = value;
-  }
-
-  List<ItemDoPedido> get itensDoPedido => _itensDoPedido;
-
-  set itensDoPedido(List<ItemDoPedido> value) {
-    _itensDoPedido = value;
   }
 
   Peso get peso => _peso;

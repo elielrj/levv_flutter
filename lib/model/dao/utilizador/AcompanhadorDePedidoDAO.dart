@@ -7,26 +7,26 @@ import 'package:levv/model/dao/backend/PreferencesLevv.dart';
 
 import '../../bo/pedido/Pedido.dart';
 
-class AcompanhadorDePedidoDAO extends CrudDAO<AcompanhadorDePedido> {
+class AcompanhadorDePedidoDAO extends CrudDAO<AcompanhadorDePedido>{
 
 
 
   @override
-  void create(AcompanhadorDePedido acompanhadorDePedido)  {}
+  Future<void> create(AcompanhadorDePedido acompanhadorDePedido)  async{}
 
   @override
-  void delete(AcompanhadorDePedido acompanhadorDePedido) {}
+  Future<void> delete(AcompanhadorDePedido acompanhadorDePedido) async{}
 
   @override
-  List<AcompanhadorDePedido> retrive() {
+  Future<List<AcompanhadorDePedido>> retrive() async{
     return [];
   }
 
   @override
-  void update(AcompanhadorDePedido acompanhadorDePedido)  {}
+  Future<void> update(AcompanhadorDePedido acompanhadorDePedido) async {}
 
   @override
-  AcompanhadorDePedido retriveForPhone(String phone) {
+  Future<AcompanhadorDePedido> retriveForPhone(String phone) async{
     return AcompanhadorDePedidoBuilder().create();
   }
 }

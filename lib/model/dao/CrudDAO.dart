@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 abstract class CrudDAO<T>{
 
-  void create(T objeto);
-  List<T> retrive();
-  T retriveForPhone(String phone);
-  void update(T objeto);
-  void delete(T objeto);
+  Future<void> create(T objeto);
+  Future<List<T>> retrive();
+  Future<T> retriveForPhone(String phone);
+  Future<void> update(T objeto);
+  Future<void> delete(T objeto);
 
 }

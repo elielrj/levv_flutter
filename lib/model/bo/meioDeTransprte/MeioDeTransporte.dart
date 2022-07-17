@@ -1,13 +1,22 @@
-
 import 'package:flutter/material.dart';
 
-class MeioDeTransporte{
+class MeioDeTransporte {
+  static const A_PE = "A pé";
+  static const BIKE = "Bike";
+  static const MOTO = "Moto";
+  static const CARRO = "Carro";
 
+  static const A_PE_VALOR = 1;
+  static const BIKE_VALOR = 2;
+  static const MOTO_VALOR = 3;
+  static const CARRO_VALOR = 4;
 
- late  String _descricao;
- late double _limiteDePeso;
- late double _limiteDeVoume;
- late bool _status;
+  late String _descricao;
+  //todo peso
+  late double _limiteDePeso;
+  //todo volume
+  late double _limiteDeVoume;
+  late bool _status;
 
   bool get status => _status;
 
@@ -32,39 +41,53 @@ class MeioDeTransporte{
   set descricao(String value) {
     _descricao = value;
   }
+
+  int buscarValorDoMeioDeTransporte(String meioDeTransporte) {
+    switch (meioDeTransporte) {
+      case MeioDeTransporte.A_PE:
+        return MeioDeTransporte.A_PE_VALOR;
+      case MeioDeTransporte.BIKE:
+        return MeioDeTransporte.BIKE_VALOR;
+      case MeioDeTransporte.MOTO:
+        return MeioDeTransporte.MOTO_VALOR;
+      case MeioDeTransporte.CARRO:
+        return MeioDeTransporte.CARRO_VALOR;
+    }
+    return 0;
+  }
 }
 
-class MeioDeTransporteBuilder{
+class MeioDeTransporteBuilder {
   static final MeioDeTransporte _meioDeTransporte = MeioDeTransporte();
 
-  MeioDeTransporteBuilder(){
+  MeioDeTransporteBuilder() {
     _meioDeTransporte.descricao = "";
     _meioDeTransporte.limiteDePeso = 0;
     _meioDeTransporte.limiteDeVoume = 0;
     _meioDeTransporte.status = false;
   }
 
-  MeioDeTransporteBuilder comDescricao(String descricao){
+  MeioDeTransporteBuilder comDescricao(String descricao) {
     _meioDeTransporte.descricao = descricao;
     return this;
   }
 
-  MeioDeTransporteBuilder comLimiteDePeso(double limiteDePeso){
+  MeioDeTransporteBuilder comLimiteDePeso(double limiteDePeso) {
     _meioDeTransporte.limiteDePeso = limiteDePeso;
     return this;
   }
 
-  MeioDeTransporteBuilder comLimiteDeVolume(double limiteDeVolume){
+  MeioDeTransporteBuilder comLimiteDeVolume(double limiteDeVolume) {
     _meioDeTransporte.limiteDeVoume = limiteDeVolume;
     return this;
   }
 
-  MeioDeTransporteBuilder comStatus(bool status){
+  MeioDeTransporteBuilder comStatus(bool status) {
     _meioDeTransporte.status = status;
     return this;
   }
 
-  MeioDeTransporte create(){
+  MeioDeTransporte create() {
     return _meioDeTransporte;
   }
 }
