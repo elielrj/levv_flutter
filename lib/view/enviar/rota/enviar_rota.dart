@@ -32,7 +32,7 @@ class _EnviarRotaState extends State<EnviarRota> {
                   index < widget.pedido.itensDoPedido.length;
                   index++)
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 4.0, bottom: 4),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
