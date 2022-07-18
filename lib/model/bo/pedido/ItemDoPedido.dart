@@ -13,7 +13,7 @@ class ItemDoPedido {
   late Endereco _entrega;
 
 
-  static final VAZIO = ItemDoPedidoBuilder().create();
+  static ItemDoPedido VAZIO = ItemDoPedidoBuilder().create();
 
   int get ordem => _ordem;
 
@@ -36,7 +36,7 @@ class ItemDoPedido {
   }
 }
 
-class ItemDoPedidoBuilder {
+class  ItemDoPedidoBuilder {
   static final ItemDoPedido _itemDoPedido = ItemDoPedido();
 
   ItemDoPedidoBuilder() {

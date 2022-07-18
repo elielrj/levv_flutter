@@ -25,6 +25,8 @@ class TextLevv{
   static const String ENDERECO_COLETA = "Endereço de coleta";
 
   static const MEIO_DE_TRANSPORTE = "MEIO DE TRANSPORTE";
+  static const PESO = "PESO";
+  static const ENVIAR_UM_PRODUTO = "Enviar um produto";
 
 
 }

@@ -28,8 +28,8 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
     // print("Coleta: " + widget.itemDoPedido.coleta.toString());
     //print("Entrega: " + widget.itemDoPedido.entrega.toString());
 
-    _controllerColeta.text = widget.itemDoPedido.coleta.toString();
-    _controllerEntrega.text = widget.itemDoPedido.entrega.toString();
+    //_controllerColeta.text = widget.itemDoPedido.coleta.toString();
+    //_controllerEntrega.text = widget.itemDoPedido.entrega.toString();
 
     return Card(
       child: Column(

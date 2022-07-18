@@ -11,6 +11,8 @@ class MeioDeTransporte {
   static const MOTO_VALOR = 3;
   static const CARRO_VALOR = 4;
 
+  static const LISTA_DE_MEIOS = [A_PE,BIKE,MOTO,CARRO];
+
   late String _descricao;
   //todo peso
   late double _limiteDePeso;
@@ -42,7 +44,7 @@ class MeioDeTransporte {
     _descricao = value;
   }
 
-  int buscarValorDoMeioDeTransporte(String meioDeTransporte) {
+  static int buscarValorDoMeioDeTransporte(String meioDeTransporte) {
     switch (meioDeTransporte) {
       case MeioDeTransporte.A_PE:
         return MeioDeTransporte.A_PE_VALOR;
@@ -54,6 +56,20 @@ class MeioDeTransporte {
         return MeioDeTransporte.CARRO_VALOR;
     }
     return 0;
+  }
+
+  static String buscarMeioDeTransportePeloValor(int meioDeTransporte) {
+    switch (meioDeTransporte) {
+      case MeioDeTransporte.A_PE_VALOR:
+        return MeioDeTransporte.A_PE;
+      case MeioDeTransporte.BIKE_VALOR:
+        return MeioDeTransporte.BIKE;
+      case MeioDeTransporte.MOTO_VALOR:
+        return MeioDeTransporte.MOTO;
+      case MeioDeTransporte.CARRO_VALOR:
+        return MeioDeTransporte.CARRO;
+    }
+    return "";
   }
 }
 

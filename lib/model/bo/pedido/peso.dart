@@ -23,6 +23,30 @@ class Peso {
     _peso = value;
   }
 
+  static String buscarValorDoPeso(int valor){
+    switch(valor){
+      case Peso.PESO_VALOR_1: return Peso.PESO_1;
+      case Peso.PESO_VALOR_5: return Peso.PESO_5;
+      case Peso.PESO_VALOR_10: return Peso.PESO_10;
+      case Peso.PESO_VALOR_15: return Peso.PESO_15;
+      case Peso.PESO_VALOR_20: return Peso.PESO_20;
+      case Peso.PESO_VALOR_25: return Peso.PESO_25;
+    }
+    return "";
+  }
+
+  static int buscarNomeDoPesoComValor(String valor){
+    switch(valor){
+      case Peso.PESO_1: return Peso.PESO_VALOR_1;
+      case Peso.PESO_5: return Peso.PESO_VALOR_5;
+      case Peso.PESO_10: return Peso.PESO_VALOR_10;
+      case Peso.PESO_15: return Peso.PESO_VALOR_15;
+      case Peso.PESO_20: return Peso.PESO_VALOR_20;
+      case Peso.PESO_25: return Peso.PESO_VALOR_25;
+    }
+    return 0;
+  }
+
 }
 
 class PesoBuilder{

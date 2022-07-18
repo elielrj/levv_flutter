@@ -7,7 +7,7 @@ class Estado{
   late String _sigla;
   late bool _status;
 
-  static final Estado VAZIO = EstadoBuilder().comNome("").status(false).comSigla("").create();
+  static late Estado VAZIO = EstadoBuilder().comNome("").status(false).comSigla("").create();
 
 
 

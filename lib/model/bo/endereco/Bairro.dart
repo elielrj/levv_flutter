@@ -9,7 +9,7 @@ class Bairro{
   late bool _status;
   late Cidade  _cidade;
 
-  static final VAZIO = BairroBuilder().create();
+  static Bairro VAZIO = BairroBuilder().create();
 
 
 

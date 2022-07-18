@@ -6,7 +6,7 @@ class TipoDeImovel {
   static const String CASA = "Casa";
   static const String APT = "Apt";
   static const String LOJA = "Loja";
-  static final VAZIO = TipoDeImovelBuilder().create();
+  static TipoDeImovel VAZIO = TipoDeImovelBuilder().create();
 
 
   String get tipo => _tipo;

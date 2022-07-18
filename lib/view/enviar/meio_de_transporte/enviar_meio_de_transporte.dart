@@ -15,59 +15,62 @@ class EnviarMeioDeTransporte extends StatefulWidget {
 }
 
 class _EnviarMeioDeTransporteState extends State<EnviarMeioDeTransporte> {
-
-   late final List<MeioDeTransporte> _listaDeMeiosDeTransporte;
-
   @override
   Widget build(BuildContext context) {
-
-    _buscarMeiosDeTransporte();
-
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
         const Text(TextLevv.MEIO_DE_TRANSPORTE, style: TextStyle(fontSize: 16)),
-        Card(
-          child: DropdownButton(
+        SizedBox(
+          width: 120,
+          child: Card(
+            child: DropdownButton(
               underline: Container(
                 color: Colors.brown,
               ),
               isExpanded: true,
-              value: "moto",
+              value: _meioDeTransporteAtual(),
               items: const [
-
                 DropdownMenuItem(
-                  child: Text("Moto"),
-                  value: "moto",
+                  child: Text(MeioDeTransporte.A_PE),
+                  value: MeioDeTransporte.A_PE_VALOR,
                 ),
                 DropdownMenuItem(
-                  child: Text("Bike"),
-                  value: "bike",
+                  child: Text(MeioDeTransporte.BIKE),
+                  value: MeioDeTransporte.BIKE_VALOR,
                 ),
                 DropdownMenuItem(
-                  child: Text("Carro"),
-                  value: "carro",
+                  child: Text(MeioDeTransporte.MOTO),
+                  value: MeioDeTransporte.MOTO_VALOR,
+                ),
+                DropdownMenuItem(
+                  child: Text(MeioDeTransporte.CARRO),
+                  value: MeioDeTransporte.CARRO_VALOR,
                 ),
               ],
-              onChanged: (value) => setState(() {
-                    widget.pedido.meioDeTransporte.descricao = value.toString();
-                  })),
-        ),
-
+              onChanged: (value) => _selecionarMeioDeTransporte(value),
+            ),
+          ),
+        )
       ],
     );
   }
 
-  Future<void> _buscarMeiosDeTransporte() async {
-    //todo 3 - DAO p/ meio de transp
-    MeioDeTransporteDAO meioDeTransporteDAO = MeioDeTransporteDAO();
-    _listaDeMeiosDeTransporte = await meioDeTransporteDAO.retrive();
+  _selecionarMeioDeTransporte(var value) {
+    setState(() {
+      widget.pedido.meioDeTransporte.descricao =
+          MeioDeTransporte.buscarMeioDeTransportePeloValor(
+              int.parse(value.toString()));
+    });
   }
 
-  Widget _menuItem(MeioDeTransporte meioDeTransporte) => DropdownMenuItem(
-        child: Text(meioDeTransporte.descricao),
-        value: meioDeTransporte
-            .buscarValorDoMeioDeTransporte(meioDeTransporte.descricao),
-      );
+  int _meioDeTransporteAtual() {
+    if (widget.pedido.meioDeTransporte.descricao == null ||
+        widget.pedido.meioDeTransporte.descricao == "") {
+      widget.pedido.meioDeTransporte.descricao = MeioDeTransporte.MOTO;
+    }
 
+    return MeioDeTransporte.buscarValorDoMeioDeTransporte(
+        widget.pedido.meioDeTransporte.descricao.toString());
+  }
 }

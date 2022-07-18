@@ -25,7 +25,7 @@ class Endereco{
   static const String TRABALHO = "endereco_de_trabalho";
   static const String FAVORITO = "endereco_de_favorito";
 
-  static final Endereco VAZIO = EnderecoBuilder().create();
+  static late Endereco VAZIO = EnderecoBuilder().create();
 
 
   GeoPoint get geologalizacao => _geologalizacao;
@@ -83,6 +83,7 @@ class Endereco{
   }
 
 
+
   @override
   String toString() {
     return
@@ -97,7 +98,7 @@ class Endereco{
 
 class  EnderecoBuilder{
 
-  static final  Endereco _endereco = Endereco();
+  static  final Endereco _endereco = Endereco();
 
   EnderecoBuilder(){
     _endereco.descricao = "";
@@ -106,7 +107,8 @@ class  EnderecoBuilder{
     _endereco.complemento = "";
     _endereco.bairro = Bairro.VAZIO;
     _endereco.cep = Cep.VAZIO;
-    _endereco.geologalizacao = const GeoPoint(0, 0);
+    _endereco.geologalizacao = GeoPoint(0, 0);
+    _endereco.tipoDeImovel = TipoDeImovelBuilder().create();
   }
 
   EnderecoBuilder comDescricao(String descricao){

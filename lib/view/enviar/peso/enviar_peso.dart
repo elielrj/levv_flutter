@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
+import 'package:levv/view/frontend/text_levv.dart';
 
 import '../../../model/bo/pedido/Pedido.dart';
+import '../../../model/bo/pedido/peso.dart';
 
 class EnviarPeso extends StatefulWidget {
-   EnviarPeso({Key? key, required this.pedido}) : super(key: key);
+  EnviarPeso({Key? key, required this.pedido}) : super(key: key);
 
   Pedido pedido;
 
@@ -13,66 +14,77 @@ class EnviarPeso extends StatefulWidget {
 }
 
 class _EnviarPesoState extends State<EnviarPeso> {
-
-  int _peso = 1;
-
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       children: [
         const Text(
-          "PESO",
+          TextLevv.PESO,
           style: TextStyle(fontSize: 16),
         ),
-        Card(
-          child: DropdownButton(
-              underline: Container(
-                color: Colors.brown,
-              ),
-              isExpanded: true,
-              value: 1,
-              items: const [
-                DropdownMenuItem(
-                  child: Text("Até 1 Kg"),
-                  value: 1,
+        SizedBox(
+          width: 90,
+          child: Card(
+            child: DropdownButton(
+                underline: Container(
+                  color: Colors.brown,
                 ),
-                DropdownMenuItem(
-                  child: Text("Até 5 Kg"),
-                  value: 5,
-                ),
-                DropdownMenuItem(
-                  child: Text("Até 10 Kg"),
-                  value: 10,
-                ),
-                DropdownMenuItem(
-                  child: Text("Até 15 Kg"),
-                  value: 15,
-                ),
-                DropdownMenuItem(
-                  child: Text("Até 20 Kg"),
-                  value: 20,
-
-                ),
-              ],
-              onChanged: (peso) {
-                print("Peso: ${peso.toString()} ");
-                _selecionarPeso(int.parse(peso.toString()));
-    }
-
-
-          ), //todo criar função de peso
+                isExpanded: true,
+                value: _valorAtual(),
+                items: const [
+                  DropdownMenuItem(
+                    child: Text(Peso.PESO_1),
+                    value: Peso.PESO_VALOR_1,
+                  ),
+                  DropdownMenuItem(
+                    child: Text(Peso.PESO_5),
+                    value: Peso.PESO_VALOR_5,
+                  ),
+                  DropdownMenuItem(
+                    child: Text(Peso.PESO_10),
+                    value: Peso.PESO_VALOR_10,
+                  ),
+                  DropdownMenuItem(
+                    child: Text(Peso.PESO_15),
+                    value: Peso.PESO_VALOR_15,
+                  ),
+                  DropdownMenuItem(
+                    child: Text(Peso.PESO_20),
+                    value: Peso.PESO_VALOR_20,
+                  ),
+                  DropdownMenuItem(
+                    child: Text(Peso.PESO_25),
+                    value: Peso.PESO_VALOR_25,
+                  ),
+                ],
+                onChanged: (value) => _selecionarPeso(value),
+          ),
+        )
         )
       ],
     );
-
-
   }
 
-  _selecionarPeso(int peso){
 
+  _selecionarPeso(var value){
 
-    _peso = peso;
+    String valorNumerico = value.toString();
+
+    int valor = int.parse(valorNumerico);
+
+    setState(() {
+      widget.pedido.peso.peso =valor;
+    });
   }
 
+  int _valorAtual(){
+    if(widget.pedido.peso.peso == null ||
+        widget.pedido.peso.peso == 0){
+      widget.pedido.peso.peso = Peso.PESO_VALOR_1;
+    }
+
+    return widget.pedido.peso.peso;
+  }
 
 }

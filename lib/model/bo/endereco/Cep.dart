@@ -5,7 +5,7 @@ class Cep{
   late String _cep;
   late bool _status;
 
-  static final VAZIO = CepBuilder().create();
+  static Cep VAZIO = CepBuilder().create();
 
 
   bool get status => _status;

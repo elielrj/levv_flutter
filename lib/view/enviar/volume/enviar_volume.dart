@@ -1,12 +1,12 @@
-
 import 'package:flutter/material.dart';
+import 'package:levv/model/bo/pedido/volume.dart';
 
 import '../../../model/bo/pedido/Pedido.dart';
 
 class EnviarVolume extends StatefulWidget {
-   EnviarVolume({Key? key, required this.pedido}) : super(key: key);
+  EnviarVolume({Key? key, required this.pedido}) : super(key: key);
 
-   Pedido pedido;
+  Pedido pedido;
 
   @override
   State<EnviarVolume> createState() => _EnviarVolumeState();
@@ -14,59 +14,54 @@ class EnviarVolume extends StatefulWidget {
 
 class _EnviarVolumeState extends State<EnviarVolume> {
 
-  int _volume = 1;
-
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       children: [
         const Text("VOLUME", style: TextStyle(fontSize: 16)),
-        Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Image.asset("imagens/icon_medium_volume.png",
-                      height: 15),
-                  Radio(
-                      value: 40,
-                      groupValue: 0,
-                      onChanged: (value) => setState(() {
-                        _volume = int.parse(value.toString());
-                      })),
-                  Text("40 x 40"),
-                ],
+        SizedBox(
+          width: 90,
+          child: Card(
+            child: DropdownButton(
+              underline: Container(
+                color: Colors.brown,
               ),
-              Row(
-                children: [
-                  Image.asset(
-                    "imagens/icon_medium_volume.png",
-                    height: 15,
-                  ),
-                  Radio(
-                      value: 20,
-                      groupValue: 0,
-                      onChanged: (value) => setState(() {
-                        _volume = int.parse(value.toString());
-                      })),
-                  Text("20 X 20"),
-                ],
-              ),
-              Row(
-                children: [
-                  Image.asset("imagens/icon_medium_volume.png",
-                      height: 15),
-                  Radio(
-                      value: 60,
-                      groupValue: 0,
-                      onChanged: (value) => setState(() {
-                        _volume = int.parse(value.toString());
-                      })),
-                  Text("60 x 60"),
-                ],
-              )
-            ]),
+              isExpanded: true,
+              value: _valorAtual(),
+              items: const [
+                DropdownMenuItem(
+                  child: Text(Volume.VOLUME_20_POR_20),
+                  value: Volume.VOLUME_VALOR_20_POR_20,
+                ),
+                DropdownMenuItem(
+                  child: Text(Volume.VOLUME_40_POR_40),
+                  value: Volume.VOLUME_VALOR_40_POR_40,
+                ),
+                DropdownMenuItem(
+                  child: Text(Volume.VOLUME_60_POR_60),
+                  value: Volume.VOLUME_VALOR_60_POR_60,
+                ),
+              ],
+              onChanged: (value) => _selecionarVolume(value),
+            ),
+          ),
+        ),
       ],
     );
+  }
+
+  _selecionarVolume(var value) {
+    setState(() {
+      widget.pedido.volume.volume = int.parse(value.toString());
+    });
+  }
+
+  int _valorAtual() {
+    if(widget.pedido.volume.volume == null ||
+        widget.pedido.volume.volume == 0){
+      widget.pedido.volume.volume = Volume.VOLUME_VALOR_20_POR_20;
+    }
+    return widget.pedido.volume.volume;
   }
 }

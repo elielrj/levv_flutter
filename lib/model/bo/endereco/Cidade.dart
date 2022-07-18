@@ -8,7 +8,7 @@ class Cidade{
   late bool _status;
   late Estado _estado;
 
-  static final Cidade VAZIO = CidadeBuilder().create();
+  static Cidade VAZIO = CidadeBuilder().create();
 
 
 
