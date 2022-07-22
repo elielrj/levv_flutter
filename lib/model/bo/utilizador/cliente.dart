@@ -33,7 +33,7 @@ class ClienteBuilder
   static ClienteCelularNumero get instance => ClienteBuilder._();
 
   @override
-  ClienteCelularStatus numero(String numero) {
+  ClienteCelularStatus numeroDeCelular(String numero) {
     _cliente.celular.numero = numero;
     return this;
   }
@@ -121,7 +121,7 @@ class ClienteBuilder
 }
 
 abstract class ClienteCelularNumero {
-  ClienteCelularStatus numero(String numero);
+  ClienteCelularStatus numeroDeCelular(String numero);
 }
 
 abstract class ClienteCelularStatus {

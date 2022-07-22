@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
-class TipoDeUsuario{
-
+class TipoDeUsuario {
   static const String ACOMPANHADOR_DO_PEDIDO = "acompanhador_do_pedido";
   static const String ADMINISTRADOR = "administrador";
   static const String CLIENTE = "cliente";
@@ -11,33 +9,35 @@ class TipoDeUsuario{
 
   late String _tipo;
 
-
-  String get tipo => _tipo;
-
-  set tipo(String value) {
-    _tipo = value;
-  }
-
-  String exibirPerfil(){
+  String exibirPerfil() {
     return _tipo.toString().toUpperCase().replaceAll("_", " ");
   }
 }
 
-class TipoDeUsuarioBuilder{
+class TipoDeUsuarioBuilder
+    implements TipoDeUsuarioDescricao, TipoDeUsuarioBuild {
+  final TipoDeUsuario _tipoDeUsuario = TipoDeUsuario();
 
-  static final TipoDeUsuario _tipoDeUsuario = TipoDeUsuario();
+  TipoDeUsuarioBuilder._();
 
-  TipoDeUsuarioBuilder(){
-    _tipoDeUsuario.tipo = TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO;
-  }
+  static TipoDeUsuarioDescricao get instance => TipoDeUsuarioBuilder._();
 
-  TipoDeUsuarioBuilder doTipo(String tipo){
-    _tipoDeUsuario.tipo = tipo;
-    return this;
-  }
-
-  TipoDeUsuario create(){
+  @override
+  build() {
     return _tipoDeUsuario;
   }
 
+  @override
+  TipoDeUsuarioBuild descricao(String value) {
+    _tipoDeUsuario._tipo = value;
+    return this;
+  }
+}
+
+abstract class TipoDeUsuarioDescricao {
+  TipoDeUsuarioBuild descricao(String tipo);
+}
+
+abstract class TipoDeUsuarioBuild {
+  build();
 }

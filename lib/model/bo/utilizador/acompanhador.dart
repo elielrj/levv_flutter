@@ -11,7 +11,8 @@ class AcompanhadorBuilder
         AcompanhadorCelularNumero,
         AcompanhadorCelularStatus,
         AcompanhadorCelularTipoDeUsuario,
-        AcompanhadorPedido {
+        AcompanhadorPedido,
+        AcompanhadorBuild {
   final Acompanhador _acompanhador = Acompanhador();
 
   AcompanhadorBuilder._();
@@ -19,7 +20,7 @@ class AcompanhadorBuilder
   static AcompanhadorCelularNumero get instance => AcompanhadorBuilder._();
 
   @override
-  AcompanhadorCelularStatus numero(String numero) {
+  AcompanhadorCelularStatus numeroDeCelular(String numero) {
     _acompanhador.celular.numero = numero;
     return this;
   }
@@ -42,26 +43,26 @@ class AcompanhadorBuilder
   }
 
   @override
-  AcompanhadorPedido adicionarLista(List<Pedido> pedidos) {
+  AcompanhadorBuild adicionarLista(List<Pedido> pedidos) {
     _acompanhador.celular.listaDePedidos = pedidos;
     return this;
   }
 
   @override
-  AcompanhadorPedido adicionarPedido(Pedido pedido) {
+  AcompanhadorBuild adicionarPedido(Pedido pedido) {
     _acompanhador.celular.listaDePedidos ??= [];
     _acompanhador.celular.listaDePedidos!.add(pedido);
     return this;
   }
 
   @override
-  AcompanhadorPedido semLista() {
+  AcompanhadorBuild semLista() {
     return this;
   }
 }
 
 abstract class AcompanhadorCelularNumero {
-  AcompanhadorCelularStatus numero(String numero);
+  AcompanhadorCelularStatus numeroDeCelular(String numero);
 }
 
 abstract class AcompanhadorCelularStatus {
@@ -73,11 +74,13 @@ abstract class AcompanhadorCelularTipoDeUsuario {
 }
 
 abstract class AcompanhadorPedido {
-  AcompanhadorPedido adicionarLista(List<Pedido> pedidos);
+  AcompanhadorBuild adicionarLista(List<Pedido> pedidos);
 
-  AcompanhadorPedido adicionarPedido(Pedido pedido);
+  AcompanhadorBuild adicionarPedido(Pedido pedido);
 
-  AcompanhadorPedido semLista();
+  AcompanhadorBuild semLista();
+}
 
+abstract class AcompanhadorBuild {
   Acompanhador build();
 }

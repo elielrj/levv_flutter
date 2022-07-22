@@ -12,7 +12,7 @@ class TipoDeImovel {
   }
 }
 
-class TipoDeImovelBuilder implements TipoDeImovelTipo {
+class TipoDeImovelBuilder implements TipoDeImovelTipo, TipoDeImovelBuild {
   static TipoDeImovel _tipoDeImovel = TipoDeImovel();
 
   TipoDeImovelBuilder._();
@@ -25,14 +25,19 @@ class TipoDeImovelBuilder implements TipoDeImovelTipo {
   }
 
   @override
-  TipoDeImovelTipo tipo(String tipo) {
+  TipoDeImovelBuild tipo(String tipo) {
     _tipoDeImovel.tipo = tipo;
     return this;
   }
 }
 
 abstract class TipoDeImovelTipo {
-  TipoDeImovelTipo tipo(String tipo);
+  TipoDeImovelBuild tipo(String tipo);
+
+}
+
+abstract class TipoDeImovelBuild {
+
 
   TipoDeImovel build();
 }

@@ -75,7 +75,7 @@ class LojistaBuider
   }
 
   @override
-  LojistaCelularStatus numero(String celular) {
+  LojistaCelularStatus numeroDeCelular(String celular) {
     _lojista.celular.numero = celular;
     return this;
   }
@@ -104,7 +104,7 @@ class LojistaBuider
 }
 
 abstract class LojistaCelularNumero {
-  LojistaCelularStatus numero(String celular);
+  LojistaCelularStatus numeroDeCelular(String celular);
 }
 
 abstract class LojistaCelularStatus {

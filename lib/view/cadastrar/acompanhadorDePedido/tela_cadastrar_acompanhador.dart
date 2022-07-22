@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:levv/model/bo/endereco/tipo_de_imovel.dart';
+import 'package:levv/model/bo/usuario/tipo_de_usuario.dart';
 import 'package:levv/model/bo/utilizador/acompanhador.dart';
 import 'package:levv/view/cadastrar/acompanhadorDePedido/cadastrador_de_usuario.dart';
 import 'package:levv/view/frontend/colors_levv.dart';
@@ -15,9 +17,7 @@ class TelaCadastrarAcompanhador extends StatefulWidget {
       _TelaCadastrarAcompanhadorState();
 }
 
-class _TelaCadastrarAcompanhadorState
-    extends State<TelaCadastrarAcompanhador> {
-
+class _TelaCadastrarAcompanhadorState extends State<TelaCadastrarAcompanhador> {
   final TextEditingController _controller = TextEditingController();
   final CadastradorDeUsuario _cadastradorDeUsuario = CadastradorDeUsuario();
   late Usuario _usuario;
@@ -42,7 +42,6 @@ class _TelaCadastrarAcompanhadorState
             TextField(
               controller: _controller,
               keyboardType: TextInputType.phone,
-
               decoration: InputDecoration(
                 counterText: _controller.text.isNotEmpty
                     ? "${_controller.text.length} ${TextLevv.VARIOS_CARACTERES}"
@@ -82,7 +81,8 @@ class _TelaCadastrarAcompanhadorState
               ),
               onPressed: () async => _controller.text.isNotEmpty
                   ? _cadastrar()
-                  : _exibirAvisoDeErroAoCadastrar(TextLevv.NUMERO_CELULAR_INVALIDO),
+                  : _exibirAvisoDeErroAoCadastrar(
+                      TextLevv.NUMERO_CELULAR_INVALIDO),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -118,18 +118,22 @@ class _TelaCadastrarAcompanhadorState
 
   //2
   Future<void> _criarUsuario() async {
-    _usuario = AcompanhadorDePedidoBuilder()
-        .comCelular(_controller.text.toString())
-        .create();
+
+    //todo
+    _usuario = AcompanhadorBuilder.instance
+        .numeroDeCelular("0000-0000")
+        .status(false)
+        .tipoDeUsuario(TipoDeUsuarioBuilder.instance
+            .descricao(TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO)
+            .build())
+        .semLista()
+        .build();
   }
 
   //3
   _navegarParaTelaHome() {
     Navigator.pushReplacement(context,
-        MaterialPageRoute(
-            builder: (context) => TelaHome(usuario: _usuario)
-        )
-    );
+        MaterialPageRoute(builder: (context) => TelaHome(usuario: _usuario)));
   }
 
   //4

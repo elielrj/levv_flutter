@@ -11,7 +11,7 @@ void main() {
 
   print("Descrição: ${endereco.apelido}");
   print("Logradouro: ${endereco.logradouro}");
-  print("Numero: ${endereco.numero}");
+  print("Numero: ${endereco.numeroDeCelular}");
   print("ComplementoDescrição: ${endereco.complemento}");
   print("Bairo: ${endereco.bairro}");
   print("Cep: ${endereco.cep}");
@@ -39,7 +39,7 @@ void main() {
 
   print("Descrição: ${endereco2.apelido}");
   print("Logradouro: ${endereco2.logradouro}");
-  print("Numero: ${endereco2.numero}");
+  print("Numero: ${endereco2.numeroDeCelular}");
   print("Complemento: ${endereco2.complemento}");
   print("Bairo: ${endereco2.bairro}");
   print("Cep: ${endereco2.cep}");

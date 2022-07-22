@@ -73,7 +73,7 @@ class AdministradorBuilder
   }
 
   @override
-  AdministradorCelularStatus numero(String numero) {
+  AdministradorCelularStatus numeroDeCelular(String numero) {
     _administrador.celular.numero = numero;
     return this;
   }
@@ -113,7 +113,7 @@ class AdministradorBuilder
 }
 
 abstract class AdministradorCelularNumero {
-  AdministradorCelularStatus numero(String numero);
+  AdministradorCelularStatus numeroDeCelular(String numero);
 }
 
 abstract class AdministradorCelularStatus {

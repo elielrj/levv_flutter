@@ -37,7 +37,7 @@ class TransportadorBuilder
   static TransportadorCelularNumero get instance => TransportadorBuilder._();
 
   @override
-  TransportadorCelularStatus numero(String numero) {
+  TransportadorCelularStatus numeroDeCelular(String numero) {
     _transportador.celular.numero = numero;
     return this;
   }
@@ -161,7 +161,7 @@ class TransportadorBuilder
 }
 
 abstract class TransportadorCelularNumero {
-  TransportadorCelularStatus numero(String numero);
+  TransportadorCelularStatus numeroDeCelular(String numero);
 }
 
 abstract class TransportadorCelularStatus {
