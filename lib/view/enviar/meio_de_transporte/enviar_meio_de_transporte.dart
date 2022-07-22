@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:levv/model/bo/meioDeTransprte/MeioDeTransporte.dart';
+import 'package:levv/model/bo/meioDeTransprte/meio_de_transporte.dart';
 import 'package:levv/model/dao/meioDeTransporte/MeioDeTransporteDAO.dart';
 import 'package:levv/view/frontend/text_levv.dart';
 
-import '../../../model/bo/pedido/Pedido.dart';
+import '../../../model/bo/pedido/pedido.dart';
 
 class EnviarMeioDeTransporte extends StatefulWidget {
   EnviarMeioDeTransporte({Key? key, required this.pedido}) : super(key: key);
@@ -32,19 +32,27 @@ class _EnviarMeioDeTransporteState extends State<EnviarMeioDeTransporte> {
               value: _meioDeTransporteAtual(),
               items: const [
                 DropdownMenuItem(
-                  child: Text(MeioDeTransporte.A_PE),
+                  child:
+                      Text(MeioDeTransporte.A_PE,
+                          textAlign: TextAlign.center),
                   value: MeioDeTransporte.A_PE_VALOR,
                 ),
                 DropdownMenuItem(
-                  child: Text(MeioDeTransporte.BIKE),
+                  child:
+                      Text(MeioDeTransporte.BIKE,
+                          textAlign: TextAlign.center),
                   value: MeioDeTransporte.BIKE_VALOR,
                 ),
                 DropdownMenuItem(
-                  child: Text(MeioDeTransporte.MOTO),
+                  child:
+                      Text(MeioDeTransporte.MOTO,
+                          textAlign: TextAlign.center),
                   value: MeioDeTransporte.MOTO_VALOR,
                 ),
                 DropdownMenuItem(
-                  child: Text(MeioDeTransporte.CARRO),
+                  child:
+                      Text(MeioDeTransporte.CARRO,
+                          textAlign: TextAlign.center),
                   value: MeioDeTransporte.CARRO_VALOR,
                 ),
               ],

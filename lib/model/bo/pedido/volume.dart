@@ -7,32 +7,34 @@ class Volume {
 
   static const VOLUME_VALOR_20_POR_20 = 1;
   static const VOLUME_VALOR_40_POR_40 = 2;
-  static const VOLUME_VALOR_60_POR_60= 3;
+  static const VOLUME_VALOR_60_POR_60 = 3;
 
-  late int _volume;
-
-  int get volume => _volume;
-
-  set volume(int value) {
-    _volume = value;
-  }
-
+  late int valor;
 }
 
-class VolumeBuilder{
+class VolumeBuilder implements VolumeValor, VolumeBuild {
+  final Volume _volume = Volume();
 
-  static final Volume _volume = Volume();
+  VolumeBuilder._();
 
-  VolumeBuilder(){
-    _volume.volume = Volume.VOLUME_VALOR_20_POR_20;
-  }
+  static VolumeValor get instace => VolumeBuilder._();
 
-  VolumeBuilder comVolume(int volume){
-    _volume.volume = volume;
-    return this;
-  }
-
-  Volume create(){
+  @override
+  Volume build() {
     return _volume;
   }
+
+  @override
+  VolumeBuild valor(int valor) {
+    _volume.valor = valor;
+    return this;
+  }
+}
+
+abstract class VolumeValor {
+  VolumeBuild valor(int valor);
+}
+
+abstract class VolumeBuild{
+  Volume build();
 }

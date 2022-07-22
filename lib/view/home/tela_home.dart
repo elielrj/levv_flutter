@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:levv/model/bo/usuario/Usuario.dart';
+import 'package:levv/model/bo/usuario/usuario.dart';
 import 'package:levv/view/frontend/colors_levv.dart';
 import 'package:levv/view/frontend/image_levv.dart';
 import 'package:levv/view/frontend/route_levv.dart';
 import 'package:levv/view/frontend/text_levv.dart';
-import '../enviar/tela_enviar.dart';
+
 
 class TelaHome extends StatefulWidget {
   const TelaHome({Key? key, required this.usuario}) : super(key: key);
@@ -93,7 +93,7 @@ class _TelaHomeState extends State<TelaHome> {
                           )
                         ],
                       ),
-                      onPressed: () => _navegarParaTelaAcompanharEntrega(),
+                      onPressed: () => _navegarParaTelaAcompanhar(),
                     ),
                   ),
                 ),
@@ -108,7 +108,7 @@ class _TelaHomeState extends State<TelaHome> {
                           shadowColor: Colors.black,
                           elevation: 3,
                           primary: Colors.white),
-                      onPressed: () => _navegarParaTelaEnviarPedido(),
+                      onPressed: () => _navegarParaTelaEnviar(),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -181,7 +181,7 @@ class _TelaHomeState extends State<TelaHome> {
                             )
                           ],
                         ),
-                        onPressed: () => _navegarParaTelaEntregarPedido()),
+                        onPressed: () => _navegarParaTelaEntregar()),
                   ),
                 ),
               ],
@@ -192,20 +192,20 @@ class _TelaHomeState extends State<TelaHome> {
         elevation: 5,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        onPressed: () => _navegarParaTelaEnviarPedido(),
+        onPressed: () => _navegarParaTelaEnviar(),
       ),
     );
   }
 
-  _navegarParaTelaEnviarPedido() {
-    Navigator.pushNamed(context, RouteLevv.TELA_ENVIAR_PEDIDO);
+  _navegarParaTelaEnviar() {
+    Navigator.pushNamed(context, RouteLevv.TELA_ENVIAR);
   }
 
-  _navegarParaTelaAcompanharEntrega() {
+  _navegarParaTelaAcompanhar() {
     Navigator.pushNamed(context, RouteLevv.TELA_ACOMPANHAR);
   }
 
-  _navegarParaTelaEntregarPedido() {
-    Navigator.pushNamed(context, RouteLevv.TELA_ENTREGAR_PEDIDO);
+  _navegarParaTelaEntregar() {
+    Navigator.pushNamed(context, RouteLevv.TELA_ENTREGAR);
   }
 }

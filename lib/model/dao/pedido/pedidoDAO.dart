@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:levv/model/bo/pedido/Pedido.dart';
+import 'package:levv/model/bo/pedido/pedido.dart';
 import 'package:levv/model/dao/CrudDAO.dart';
 
 class PedidoDAO extends CrudDAO<Pedido>{

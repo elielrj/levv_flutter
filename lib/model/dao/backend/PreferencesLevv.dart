@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:levv/model/bo/usuario/TipoDeUsuario.dart';
+import 'package:levv/model/bo/usuario/tipo_de_usuario.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesLevv {

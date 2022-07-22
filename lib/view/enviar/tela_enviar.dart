@@ -11,7 +11,7 @@ import 'package:levv/view/frontend/colors_levv.dart';
 import 'package:levv/view/frontend/image_levv.dart';
 import 'package:levv/view/frontend/text_levv.dart';
 
-import '../../model/bo/pedido/Pedido.dart';
+import '../../model/bo/pedido/pedido.dart';
 
 class TelaEnviar extends StatefulWidget {
   const TelaEnviar({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class TelaEnviar extends StatefulWidget {
 
 class _TelaEnviarState extends State<TelaEnviar> {
 
-  final Pedido pedido = PedidoBuilder().create();
+  Pedido pedido = PedidoBuilder().create();
 
   final valor = 0.00;
 

@@ -28,5 +28,9 @@ class TextLevv{
   static const PESO = "PESO";
   static const ENVIAR_UM_PRODUTO = "Enviar um produto";
 
+  static const NUMERO_CELULAR_INVALIDO = "Número de celular inválido";
+  static const ERRO_CRIAR_USUARIO = "Não foi possível criar um usuário";
+  static const VOLUME = "VOLUME";
+
 
 }

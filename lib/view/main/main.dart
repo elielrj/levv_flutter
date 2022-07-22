@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:levv/view/acompanhar/TelaAcompanhar.dart';
 import 'package:levv/view/cadastrar/administrador/TelaCadastrarAdministrador.dart';
-import 'package:levv/view/cadastrar/acompanhadorDePedido/tela_cadastrar_acompanhador_de_pedido.dart';
+import 'package:levv/view/cadastrar/acompanhadorDePedido/tela_cadastrar_acompanhador.dart';
 import 'package:levv/view/cadastrar/cliente/TelaCadastrarCliente.dart';
 import 'package:levv/view/cadastrar/endereco/TelaCadastrarEndereco.dart';
 import 'package:levv/view/cadastrar/lojista/TelaCadastrarLojista.dart';
@@ -23,7 +23,7 @@ void main() {
       RouteLevv.TELA_SPLASH: (context) => const TelaSplash(),
       //RouteLevv.TELA_HOME: (context) => TelaHome(),
       RouteLevv.TELA_CADASTRAR_ACOMPANHADOR_DE_PEDIDO: (context) =>
-          const TelaCadastrarAcompanhadorDePedido(),
+          const TelaCadastrarAcompanhador(),
       RouteLevv.TELA_CADASTRAR_TRANSPORTADOR: (context) =>
           const TelaCadastrarTransportador(),
       RouteLevv.TELA_CADASTRAR_CLIENTE: (context) =>
@@ -35,8 +35,8 @@ void main() {
       RouteLevv.TELA_CADASTRAR_ENDERECO: (context) =>
           const TelaCadastrarEndereco(),
       RouteLevv.TELA_ACOMPANHAR: (context) => const TelaAcompanhar(),
-      RouteLevv.TELA_ENVIAR_PEDIDO: (context) => const TelaEnviar(),
-      RouteLevv.TELA_ENTREGAR_PEDIDO: (context) => const TelaEntregar(),
+      RouteLevv.TELA_ENVIAR: (context) => const TelaEnviar(),
+      RouteLevv.TELA_ENTREGAR: (context) => const TelaEntregar(),
     },
      home: const TelaSplash(), //1º
     // home:const TelaLocalizar(),

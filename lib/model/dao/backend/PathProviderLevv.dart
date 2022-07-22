@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:levv/model/bo/endereco/Endereco.dart';
-import 'package:levv/model/bo/endereco/TipoDeImovel.dart';
+import 'package:levv/model/bo/endereco/endereco.dart';
+import 'package:levv/model/bo/endereco/tipo_de_imovel.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'dart:async';

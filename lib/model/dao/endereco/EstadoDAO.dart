@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:levv/model/bo/endereco/Estado.dart';
+import 'package:levv/model/bo/endereco/estado.dart';
 import 'package:levv/model/dao/CrudDAO.dart';
 
 class EstadoDAO extends CrudDAO<Estado>{

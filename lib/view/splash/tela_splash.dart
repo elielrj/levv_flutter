@@ -6,7 +6,7 @@ import 'package:levv/view/frontend/route_levv.dart';
 import 'package:levv/view/frontend/text_levv.dart';
 import 'package:levv/view/home/tela_home.dart';
 import 'package:levv/view/splash/buscador_de_usuario.dart';
-import '../../model/bo/usuario/Usuario.dart';
+import '../../model/bo/usuario/usuario.dart';
 
 class TelaSplash extends StatefulWidget {
   const TelaSplash({Key? key}) : super(key: key);
@@ -91,13 +91,19 @@ class _TelaSplashState extends State<TelaSplash> {
   //3
   _navegarParaTelaHome({required Usuario usuario}) {
     //Navigator.pushReplacementNamed(context, RouteLevv.TELA_HOME);
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TelaHome(usuario: _usuario)));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(
+        builder: (context) => TelaHome(usuario: _usuario)
+      )
+    );
   }
 
   //4
   _navegarParaTelaCadastrarAcompanhadorDePedido() {
     Navigator.pushReplacementNamed(
-        context, RouteLevv.TELA_CADASTRAR_ACOMPANHADOR_DE_PEDIDO);
+        context,
+        RouteLevv.TELA_CADASTRAR_ACOMPANHADOR_DE_PEDIDO
+    );
   }
 
   //5

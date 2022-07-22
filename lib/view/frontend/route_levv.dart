@@ -5,8 +5,8 @@ class RouteLevv  {
 
   static const String TELA_SPLASH = "/splash";
   //static const String TELA_HOME = "/home";
-  static const String TELA_ENVIAR_PEDIDO = "/enviar";
-  static const String TELA_ENTREGAR_PEDIDO = "/entregar";
+  static const String TELA_ENVIAR = "/enviar";
+  static const String TELA_ENTREGAR = "/entregar";
 
   static const String TELA_CADASTRAR_ENDERECO = "/cadastrar_endereco";
 

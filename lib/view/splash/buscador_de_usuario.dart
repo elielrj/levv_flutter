@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:levv/model/bo/utilizador/Administrador.dart';
-import 'package:levv/model/bo/utilizador/Cliente.dart';
-import 'package:levv/model/bo/utilizador/Lojista.dart';
-import 'package:levv/model/bo/utilizador/Transportador.dart';
-import '../../model/bo/usuario/TipoDeUsuario.dart';
-import '../../model/bo/utilizador/AcompanhadorDePedido.dart';
+import 'package:levv/model/bo/utilizador/administrador.dart';
+import 'package:levv/model/bo/utilizador/cliente.dart';
+import 'package:levv/model/bo/utilizador/lojista.dart';
+import 'package:levv/model/bo/utilizador/transportador.dart';
+import '../../model/bo/usuario/tipo_de_usuario.dart';
+import '../../model/bo/utilizador/acompanhador.dart';
 import 'package:levv/model/dao/backend/PreferencesLevv.dart';
 
 class BuscadorDeUsuario {
@@ -45,7 +45,7 @@ class BuscadorDeUsuario {
   }
 
   //3 todo retirar p/ dao
-  Future<AcompanhadorDePedido>
+  Future<Acompanhador>
       _recuperarUsuarioDoTipoAcompanhadorDoPedido() async {
     //todo criar DAO
     return AcompanhadorDePedidoBuilder().create();

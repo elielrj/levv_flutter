@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:levv/model/bo/meioDeTransprte/MeioDeTransporte.dart';
+import 'package:levv/model/bo/meioDeTransprte/meio_de_transporte.dart';
+import 'package:levv/model/bo/pedido/peso.dart';
 import 'package:levv/model/bo/pedido/volume.dart';
 import 'package:levv/model/dao/CrudDAO.dart';
 
-class MeioDeTransporteDAO extends CrudDAO<MeioDeTransporte>{
+class MeioDeTransporteDAO extends CrudDAO<MeioDeTransporte> {
   @override
   Future<void> create(MeioDeTransporte meioDeTransporte) async {
     // TODO: implement create
@@ -23,12 +24,36 @@ class MeioDeTransporteDAO extends CrudDAO<MeioDeTransporte>{
     List<MeioDeTransporte> lista = [];
 
     //todo teste
-    lista.add(MeioDeTransporteBuilder().comDescricao(MeioDeTransporte.A_PE).comStatus(false).comLimiteDePeso(5).comLimiteDeVolume(1).create());
-    lista.add(MeioDeTransporteBuilder().comDescricao(MeioDeTransporte.BIKE).comStatus(false).comLimiteDePeso(5).comLimiteDeVolume(1).create());
-    lista.add(MeioDeTransporteBuilder().comDescricao(MeioDeTransporte.MOTO).comStatus(false).comLimiteDePeso(5).comLimiteDeVolume(1).create());
-    lista.add(MeioDeTransporteBuilder().comDescricao(MeioDeTransporte.CARRO).comStatus(false).comLimiteDePeso(5).comLimiteDeVolume(1).create());
+    lista.add(MeioDeTransporteBuilder.instance
+        .descricao(MeioDeTransporte.A_PE)
+        .limiteDePeso(PesoBuilder.instance.valor(Peso.PESO_VALOR_1).build())
+        .limiteDeVolume(
+            VolumeBuilder.instace.valor(Volume.VOLUME_VALOR_20_POR_20).build())
+        .status(false)
+        .build());
+    lista.add(MeioDeTransporteBuilder.instance
+        .descricao(MeioDeTransporte.BIKE)
+        .limiteDePeso(PesoBuilder.instance.valor(Peso.PESO_VALOR_10).build())
+        .limiteDeVolume(
+            VolumeBuilder.instace.valor(Volume.VOLUME_VALOR_40_POR_40).build())
+        .status(false)
+        .build());
+    lista.add(MeioDeTransporteBuilder.instance
+        .descricao(MeioDeTransporte.MOTO)
+        .limiteDePeso(PesoBuilder.instance.valor(Peso.PESO_VALOR_5).build())
+        .limiteDeVolume(
+            VolumeBuilder.instace.valor(Volume.VOLUME_VALOR_40_POR_40).build())
+        .status(false)
+        .build());
+    lista.add(MeioDeTransporteBuilder.instance
+        .descricao(MeioDeTransporte.CARRO)
+        .limiteDePeso(PesoBuilder.instance.valor(Peso.PESO_VALOR_25).build())
+        .limiteDeVolume(
+            VolumeBuilder.instace.valor(Volume.VOLUME_VALOR_20_POR_20).build())
+        .status(false)
+        .build());
 
-    return lista ;
+    return lista;
   }
 
   @override
@@ -42,5 +67,4 @@ class MeioDeTransporteDAO extends CrudDAO<MeioDeTransporte>{
   Future<void> update(MeioDeTransporte objeto) async {
     // TODO: implement update
   }
-
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:levv/model/bo/arquivo/arquivo.dart';
 
 class Peso {
   static const PESO_1 = "Até 1 kg";
@@ -15,54 +16,68 @@ class Peso {
   static const PESO_VALOR_20 = 20;
   static const PESO_VALOR_25 = 25;
 
-  late int _peso;
+  late int valor;
 
-  int get peso => _peso;
-
-  set peso(int value) {
-    _peso = value;
-  }
-
-  static String buscarValorDoPeso(int valor){
-    switch(valor){
-      case Peso.PESO_VALOR_1: return Peso.PESO_1;
-      case Peso.PESO_VALOR_5: return Peso.PESO_5;
-      case Peso.PESO_VALOR_10: return Peso.PESO_10;
-      case Peso.PESO_VALOR_15: return Peso.PESO_15;
-      case Peso.PESO_VALOR_20: return Peso.PESO_20;
-      case Peso.PESO_VALOR_25: return Peso.PESO_25;
+  static String buscarValorDoPeso(int valor) {
+    switch (valor) {
+      case Peso.PESO_VALOR_1:
+        return Peso.PESO_1;
+      case Peso.PESO_VALOR_5:
+        return Peso.PESO_5;
+      case Peso.PESO_VALOR_10:
+        return Peso.PESO_10;
+      case Peso.PESO_VALOR_15:
+        return Peso.PESO_15;
+      case Peso.PESO_VALOR_20:
+        return Peso.PESO_20;
+      case Peso.PESO_VALOR_25:
+        return Peso.PESO_25;
     }
     return "";
   }
 
-  static int buscarNomeDoPesoComValor(String valor){
-    switch(valor){
-      case Peso.PESO_1: return Peso.PESO_VALOR_1;
-      case Peso.PESO_5: return Peso.PESO_VALOR_5;
-      case Peso.PESO_10: return Peso.PESO_VALOR_10;
-      case Peso.PESO_15: return Peso.PESO_VALOR_15;
-      case Peso.PESO_20: return Peso.PESO_VALOR_20;
-      case Peso.PESO_25: return Peso.PESO_VALOR_25;
+  static int buscarNomeDoPesoComValor(String valor) {
+    switch (valor) {
+      case Peso.PESO_1:
+        return Peso.PESO_VALOR_1;
+      case Peso.PESO_5:
+        return Peso.PESO_VALOR_5;
+      case Peso.PESO_10:
+        return Peso.PESO_VALOR_10;
+      case Peso.PESO_15:
+        return Peso.PESO_VALOR_15;
+      case Peso.PESO_20:
+        return Peso.PESO_VALOR_20;
+      case Peso.PESO_25:
+        return Peso.PESO_VALOR_25;
     }
     return 0;
   }
-
 }
 
-class PesoBuilder{
+class PesoBuilder implements PesoValor, PesoBuild {
+  final Peso _peso = Peso();
 
-  static final Peso _peso = Peso();
+  PesoBuilder._();
 
-  PesoBuilder(){
-    _peso.peso = Peso.PESO_VALOR_1;
-  }
+  static PesoValor get instance => PesoBuilder._();
 
-  PesoBuilder comPeso(int peso){
-    _peso.peso = peso;
-    return this;
-  }
-
-  Peso create(){
+  @override
+  Peso build() {
     return _peso;
   }
+
+  @override
+  PesoBuild valor(int valor) {
+    _peso.valor = valor;
+    return this;
+  }
+}
+
+abstract class PesoValor {
+  PesoBuild valor(int valor);
+}
+
+abstract class PesoBuild {
+  Peso build();
 }

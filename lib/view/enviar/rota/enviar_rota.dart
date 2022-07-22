@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:levv/model/bo/pedido/ItemDoPedido.dart';
+import 'package:levv/model/bo/pedido/item_do_pedido.dart';
 import 'package:levv/view/enviar/rota/item/enviar_rota_item_do_pedido.dart';
 import 'package:levv/view/frontend/colors_levv.dart';
 
-import '../../../model/bo/endereco/Endereco.dart';
-import '../../../model/bo/pedido/Pedido.dart';
+import '../../../model/bo/endereco/endereco.dart';
+import '../../../model/bo/pedido/pedido.dart';
 import '../../frontend/text_levv.dart';
 
 class EnviarRota extends StatefulWidget {
@@ -46,14 +46,14 @@ class _EnviarRotaState extends State<EnviarRota> {
                           IconButton(
                             icon: const Icon(Icons.add),
                             color: Colors.white,
-                            onPressed: () => _adicionarNovoItem(),
+                            onPressed: () => _adicionaItem(),
                             padding: const EdgeInsets.only(left: 8, right: 8),
                             iconSize: 25,
                           ),
                           IconButton(
                             icon: const Icon(Icons.remove),
                             color: Colors.red,
-                            onPressed: () => _removerUmItem(index),
+                            onPressed: () => _removerItem(index),
                             padding: const EdgeInsets.only(left: 8, right: 8),
                             iconSize: 25,
                           ),
@@ -69,17 +69,26 @@ class _EnviarRotaState extends State<EnviarRota> {
     );
   }
 
-  _adicionarNovoItem() {
+  //1
+  _adicionaItem() {
     if (widget.pedido.itensDoPedido.length < 10) {
       setState(() {
-        widget.pedido.itensDoPedido.add(ItemDoPedido.VAZIO);
+
+        ItemDoPedido itemDoPedido = ItemDoPedido.VAZIO;
+
+        //todo reparar probema de ordem identica
+        itemDoPedido.ordem = widget.pedido.itensDoPedido.length + 1;
+
+        widget.pedido.itensDoPedido.add(itemDoPedido);
+
       });
     } else {
-      _exibirMensagemDeErroAoAdicionarNovoItem();
+      _exibirMensagemDeErroAoAdicionarItem();
     }
   }
 
-  _removerUmItem(int index) {
+  //2
+  _removerItem(int index) {
     if (widget.pedido.itensDoPedido.length > 1) {
       setState(() {
         widget.pedido.itensDoPedido.removeAt(index);
@@ -89,10 +98,12 @@ class _EnviarRotaState extends State<EnviarRota> {
     }
   }
 
-  _exibirMensagemDeErroAoAdicionarNovoItem() {
+  //3
+  _exibirMensagemDeErroAoAdicionarItem() {
 //todo 1 - mensagem de erro
   }
 
+  //4
   _exibirMensagemDeErroAoTentarRemoverTodosOsItens() {
 //todo 2 - mensagem de erro
   }

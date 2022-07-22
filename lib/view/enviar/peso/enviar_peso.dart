@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:levv/view/frontend/text_levv.dart';
 
-import '../../../model/bo/pedido/Pedido.dart';
+import '../../../model/bo/pedido/pedido.dart';
 import '../../../model/bo/pedido/peso.dart';
 
 class EnviarPeso extends StatefulWidget {
@@ -24,67 +25,62 @@ class _EnviarPesoState extends State<EnviarPeso> {
           style: TextStyle(fontSize: 16),
         ),
         SizedBox(
-          width: 90,
-          child: Card(
-            child: DropdownButton(
+            width: 90,
+            child: Card(
+              child: DropdownButton(
                 underline: Container(
                   color: Colors.brown,
                 ),
                 isExpanded: true,
-                value: _valorAtual(),
+                value: _pesoAtual(),
                 items: const [
                   DropdownMenuItem(
-                    child: Text(Peso.PESO_1),
+                    child: Text(Peso.PESO_1, textAlign: TextAlign.center),
                     value: Peso.PESO_VALOR_1,
                   ),
                   DropdownMenuItem(
-                    child: Text(Peso.PESO_5),
+                    child: Text(Peso.PESO_5, textAlign: TextAlign.center),
                     value: Peso.PESO_VALOR_5,
                   ),
                   DropdownMenuItem(
-                    child: Text(Peso.PESO_10),
+                    child: Text(Peso.PESO_10, textAlign: TextAlign.center),
                     value: Peso.PESO_VALOR_10,
                   ),
                   DropdownMenuItem(
-                    child: Text(Peso.PESO_15),
+                    child: Text(Peso.PESO_15, textAlign: TextAlign.center),
                     value: Peso.PESO_VALOR_15,
                   ),
                   DropdownMenuItem(
-                    child: Text(Peso.PESO_20),
+                    child: Text(Peso.PESO_20, textAlign: TextAlign.center),
                     value: Peso.PESO_VALOR_20,
                   ),
                   DropdownMenuItem(
-                    child: Text(Peso.PESO_25),
+                    child: Text(Peso.PESO_25, textAlign: TextAlign.center),
                     value: Peso.PESO_VALOR_25,
                   ),
                 ],
                 onChanged: (value) => _selecionarPeso(value),
-          ),
-        )
-        )
+              ),
+            ))
       ],
     );
   }
 
-
-  _selecionarPeso(var value){
-
+  _selecionarPeso(var value) {
     String valorNumerico = value.toString();
 
     int valor = int.parse(valorNumerico);
 
     setState(() {
-      widget.pedido.peso.peso =valor;
+      widget.pedido.peso.peso = valor;
     });
   }
 
-  int _valorAtual(){
-    if(widget.pedido.peso.peso == null ||
-        widget.pedido.peso.peso == 0){
+  int _pesoAtual() {
+    if (widget.pedido.peso.peso == null || widget.pedido.peso.peso == 0) {
       widget.pedido.peso.peso = Peso.PESO_VALOR_1;
     }
 
     return widget.pedido.peso.peso;
   }
-
 }

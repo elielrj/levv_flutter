@@ -1,15 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:levv/model/bo/endereco/Bairro.dart';
-import 'package:levv/model/bo/endereco/Cep.dart';
-import 'package:levv/model/bo/endereco/Cidade.dart';
-import 'package:levv/model/bo/endereco/Endereco.dart';
-import 'package:levv/model/bo/endereco/Estado.dart';
+import 'package:levv/model/bo/endereco/bairro.dart';
+import 'package:levv/model/bo/endereco/cep.dart';
+import 'package:levv/model/bo/endereco/cidade.dart';
+import 'package:levv/model/bo/endereco/endereco.dart';
+import 'package:levv/model/bo/endereco/estado.dart';
 
 void main() {
   final endereco = EnderecoBuilder().create();
 
-  print("Descrição: ${endereco.descricao}");
+  print("Descrição: ${endereco.apelido}");
   print("Logradouro: ${endereco.logradouro}");
   print("Numero: ${endereco.numero}");
   print("ComplementoDescrição: ${endereco.complemento}");
@@ -37,7 +37,7 @@ void main() {
       .comGeologalizacao(const GeoPoint(20.0, 20.1))
       .create();
 
-  print("Descrição: ${endereco2.descricao}");
+  print("Descrição: ${endereco2.apelido}");
   print("Logradouro: ${endereco2.logradouro}");
   print("Numero: ${endereco2.numero}");
   print("Complemento: ${endereco2.complemento}");

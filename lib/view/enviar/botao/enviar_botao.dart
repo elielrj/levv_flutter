@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../model/bo/pedido/Pedido.dart';
+import '../../../model/bo/pedido/pedido.dart';
 import '../../../model/dao/pedido/pedidoDAO.dart';
 
 class EnviarBotao extends StatefulWidget {
@@ -94,11 +94,12 @@ class _EnviarBotaoState extends State<EnviarBotao> {
       ),
     );
   }
-
+//1
   _navegarParaTelaAcompanharPedido(){
 
   }
 
+  //2
   _enviarPedido() async {
 
     if(await _criarPedido()){
@@ -108,6 +109,7 @@ class _EnviarBotaoState extends State<EnviarBotao> {
     }
   }
 
+  //3
   Future<bool> _criarPedido()async {
     try {
       PedidoDAO pedidoDAO = PedidoDAO();
@@ -118,6 +120,7 @@ class _EnviarBotaoState extends State<EnviarBotao> {
     }
   }
 
+  //4
   _exibirMensagemDeErro(){
 
   }

@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:levv/model/bo/endereco/Bairro.dart';
-import 'package:levv/model/bo/endereco/Cep.dart';
-import 'package:levv/model/bo/endereco/Cidade.dart';
-import 'package:levv/model/bo/endereco/Estado.dart';
-import 'package:levv/model/bo/pedido/ItemDoPedido.dart';
+import 'package:levv/model/bo/endereco/bairro.dart';
+import 'package:levv/model/bo/endereco/cep.dart';
+import 'package:levv/model/bo/endereco/cidade.dart';
+import 'package:levv/model/bo/endereco/estado.dart';
+import 'package:levv/model/bo/pedido/item_do_pedido.dart';
 import 'package:levv/view/frontend/text_levv.dart';
 
-import '../../../../model/bo/endereco/Endereco.dart';
+import '../../../../model/bo/endereco/endereco.dart';
 
 class EnviarRotaItemDoPedido extends StatefulWidget {
   EnviarRotaItemDoPedido({Key? key, required this.itemDoPedido})
@@ -34,6 +34,13 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
     return Card(
       child: Column(
         children: [
+          Text(
+            "Item: ${widget.itemDoPedido.ordem.toString()}",
+            style: const TextStyle(
+              fontSize: 10,
+              backgroundColor: Colors.white70,
+            ),
+          ),
           Row(
             children: [_coleta(widget.itemDoPedido.coleta), _icones()],
           ),
@@ -47,19 +54,25 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
 
   Widget _icones() => Column(children: [
         IconButton(
-          icon: const Icon(Icons.location_on_outlined,size: 20,),
+          icon: const Icon(
+            Icons.location_on_outlined,
+            size: 20,
+          ),
           color: Colors.black,
           onPressed: () => _buscarLocalizacao(),
         ),
         IconButton(
-          icon: const Icon(Icons.map,size: 20,),
+          icon: const Icon(
+            Icons.map,
+            size: 20,
+          ),
           color: Colors.black,
           onPressed: () => _exibirMapa(),
         )
       ]);
 
   Widget _entrega(Endereco endereco) => Expanded(
-    child: TextField(
+        child: TextField(
           controller: _controllerEntrega,
           keyboardType: TextInputType.streetAddress,
           decoration: InputDecoration(
@@ -86,10 +99,10 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
           onChanged: (texto) => _buscarSugestaoDeEndereco(texto),
           onSubmitted: _salvarEnderecoDeEntrega(),
         ),
-  );
+      );
 
   Widget _coleta(Endereco endereco) => Expanded(
-    child: TextField(
+        child: TextField(
           controller: _controllerColeta,
           keyboardType: TextInputType.streetAddress,
           decoration: InputDecoration(
@@ -115,7 +128,7 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
           onChanged: (texto) => _buscarSugestaoDeEndereco(texto),
           onSubmitted: _salvarEnderecoDeColeta(),
         ),
-  );
+      );
 
   _limparEnderecoDeEntrega() {
     _controllerEntrega.clear();
@@ -143,10 +156,15 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
             .nomeDoBairro("")
             .pertenceACidade(CidadeBuilder()
                 .comNome("")
-                .pertenceAoEstado(EstadoBuilder().comNome("").create())
+                .pertenceAoEstado(EstadoBuilder.instance.nome("").sigla("").status(false).build())
                 .create())
             .create())
         .create();
+
+    Estado estado = EstadoBuilder.instance.nome("").sigla("").status(false).build();
+
+    Cidade cidade = CidadeBuilder.instance.nome("").estado(estado).status(false).build();
+
 
     widget.itemDoPedido.coleta = endereco;
   }
@@ -165,7 +183,7 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
             .nomeDoBairro("")
             .pertenceACidade(CidadeBuilder()
                 .comNome("")
-                .pertenceAoEstado(EstadoBuilder().comNome("").create())
+                .pertenceAoEstado(EstadoBuilder.instance.nome("").sigla("").status(false).build())
                 .create())
             .create())
         .create();
@@ -177,9 +195,7 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
     //todo exibir mapa
   }
 
-
   _exibirMapa() {
-  //todo exibir mapa
-    }
-
+    //todo exibir mapa
+  }
 }
