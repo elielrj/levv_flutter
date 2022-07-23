@@ -29,7 +29,8 @@ class TransportadorBuilder
         TransportadorNumeroRegistroDocumento,
         TransportadorPedidosTransportados,
         TransportadorArquivoIdentificacao,
-        TransportadorVeiculo {
+        TransportadorVeiculo,
+        TransportadorBuild {
   final Transportador _transportador = Transportador();
 
   TransportadorBuilder._();
@@ -43,20 +44,20 @@ class TransportadorBuilder
   }
 
   @override
-  TransportadorPedido adicionarLista(List<Pedido> pedidos) {
+  TransportadorBuild adicionarLista(List<Pedido> pedidos) {
     _transportador.celular.listaDePedidos = pedidos;
     return this;
   }
 
   @override
-  TransportadorPedido adicionarPedido(Pedido pedido) {
+  TransportadorBuild adicionarPedido(Pedido pedido) {
     _transportador.celular.listaDePedidos ??= [];
     _transportador.celular.listaDePedidos!.add(pedido);
     return this;
   }
 
   @override
-  TransportadorPedido semLista() {
+  TransportadorBuild semLista() {
     return this;
   }
 
@@ -107,8 +108,10 @@ class TransportadorBuilder
   }
 
   @override
-  TransportadorNome tipoDeUsuario(TipoDeUsuario tipoDeUsuario) {
-    _transportador.tipoDeUsuario = tipoDeUsuario;
+  TransportadorNome tipoDeUsuario() {
+    _transportador.tipoDeUsuario = TipoDeUsuarioBuilder.instance
+        .descricao(TipoDeUsuario.TRANSPORTADOR)
+        .build();
     return this;
   }
 
@@ -169,7 +172,7 @@ abstract class TransportadorCelularStatus {
 }
 
 abstract class TransportadorCelularTipoDeUsuario {
-  TransportadorNome tipoDeUsuario(TipoDeUsuario tipoDeUsuario);
+  TransportadorNome tipoDeUsuario();
 }
 
 abstract class TransportadorNome {
@@ -224,11 +227,13 @@ abstract class TransportadorVeiculo {
 }
 
 abstract class TransportadorPedido {
-  TransportadorPedido adicionarLista(List<Pedido> pedidos);
+  TransportadorBuild adicionarLista(List<Pedido> pedidos);
 
-  TransportadorPedido adicionarPedido(Pedido pedido);
+  TransportadorBuild adicionarPedido(Pedido pedido);
 
-  TransportadorPedido semLista();
+  TransportadorBuild semLista();
+}
 
+abstract class TransportadorBuild {
   Transportador build();
 }

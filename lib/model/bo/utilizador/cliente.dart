@@ -114,8 +114,9 @@ class ClienteBuilder
   }
 
   @override
-  ClienteNome tipoDeUsuario(TipoDeUsuario tipoDeUsuario) {
-    _cliente.tipoDeUsuario = tipoDeUsuario;
+  ClienteNome tipoDeUsuario() {
+    _cliente.tipoDeUsuario =
+        TipoDeUsuarioBuilder.instance.descricao(TipoDeUsuario.CLIENTE).build();
     return this;
   }
 }
@@ -129,7 +130,7 @@ abstract class ClienteCelularStatus {
 }
 
 abstract class ClienteCelularTipoDeUsuario {
-  ClienteNome tipoDeUsuario(TipoDeUsuario tipoDeUsuario);
+  ClienteNome tipoDeUsuario();
 }
 
 abstract class ClienteNome {

@@ -26,8 +26,18 @@ class Endereco {
   }
 }
 
-class EnderecoBuilder implements EnderecoApelido, EnderecoLogradouro, EnderecoNumero, EnderecoComplemento,
-EnderecoStatus, EnderecoTipoDeImovel, EnderecoBairro, EnderecoCep, EnderecoGeoPoint{
+class EnderecoBuilder
+    implements
+        EnderecoApelido,
+        EnderecoLogradouro,
+        EnderecoNumero,
+        EnderecoComplemento,
+        EnderecoStatus,
+        EnderecoTipoDeImovel,
+        EnderecoBairro,
+        EnderecoCep,
+        EnderecoGeoPoint,
+        EnderecoBuild {
   final Endereco _endereco = Endereco();
 
   EnderecoBuilder._();
@@ -127,7 +137,9 @@ abstract class EnderecoCep {
 }
 
 abstract class EnderecoGeoPoint {
-  geoPoint(GeoPoint geoPoint);
+  EnderecoBuild geoPoint(GeoPoint geoPoint);
+}
 
+abstract class EnderecoBuild {
   Endereco build();
 }

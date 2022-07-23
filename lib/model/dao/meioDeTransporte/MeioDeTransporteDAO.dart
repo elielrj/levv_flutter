@@ -26,30 +26,30 @@ class MeioDeTransporteDAO extends CrudDAO<MeioDeTransporte> {
     //todo teste
     lista.add(MeioDeTransporteBuilder.instance
         .descricao(MeioDeTransporte.A_PE)
-        .limiteDePeso(PesoBuilder.instance.valor(Peso.PESO_VALOR_1).build())
+        .limiteDePeso(PesoBuilder.instance.valorDoPeso(Peso.PESO_VALOR_1).build())
         .limiteDeVolume(
-            VolumeBuilder.instace.valor(Volume.VOLUME_VALOR_20_POR_20).build())
+            VolumeBuilder.instance.valor(Volume.VOLUME_VALOR_20_POR_20).build())
         .status(false)
         .build());
     lista.add(MeioDeTransporteBuilder.instance
         .descricao(MeioDeTransporte.BIKE)
-        .limiteDePeso(PesoBuilder.instance.valor(Peso.PESO_VALOR_10).build())
+        .limiteDePeso(PesoBuilder.instance.valorDoPeso(Peso.PESO_VALOR_10).build())
         .limiteDeVolume(
-            VolumeBuilder.instace.valor(Volume.VOLUME_VALOR_40_POR_40).build())
+            VolumeBuilder.instance.valor(Volume.VOLUME_VALOR_40_POR_40).build())
         .status(false)
         .build());
     lista.add(MeioDeTransporteBuilder.instance
         .descricao(MeioDeTransporte.MOTO)
-        .limiteDePeso(PesoBuilder.instance.valor(Peso.PESO_VALOR_5).build())
+        .limiteDePeso(PesoBuilder.instance.valorDoPeso(Peso.PESO_VALOR_5).build())
         .limiteDeVolume(
-            VolumeBuilder.instace.valor(Volume.VOLUME_VALOR_40_POR_40).build())
+            VolumeBuilder.instance.valor(Volume.VOLUME_VALOR_40_POR_40).build())
         .status(false)
         .build());
     lista.add(MeioDeTransporteBuilder.instance
         .descricao(MeioDeTransporte.CARRO)
-        .limiteDePeso(PesoBuilder.instance.valor(Peso.PESO_VALOR_25).build())
+        .limiteDePeso(PesoBuilder.instance.valorDoPeso(Peso.PESO_VALOR_25).build())
         .limiteDeVolume(
-            VolumeBuilder.instace.valor(Volume.VOLUME_VALOR_20_POR_20).build())
+            VolumeBuilder.instance.valor(Volume.VOLUME_VALOR_20_POR_20).build())
         .status(false)
         .build());
 

@@ -20,10 +20,13 @@ class LojistaBuider
         LojistaEnderecosFavoritos,
         LojistaCnpj,
         LojistaNomeFantasia,
-        LojistaNomeDaEmpresa {
+        LojistaNomeDaEmpresa,
+        LojistaBuild {
   final Lojista _lojista = Lojista();
 
   LojistaBuider._();
+
+  static LojistaCelularNumero get instance => LojistaBuider._();
 
   @override
   LojistaCnpj adicionarEnderecoFavorito(Endereco endereco) {
@@ -63,7 +66,7 @@ class LojistaBuider
   }
 
   @override
-  LojistaNomeDaEmpresa nomeDaEmpresa(String nomeDaEmpresa) {
+  LojistaBuild nomeDaEmpresa(String nomeDaEmpresa) {
     _lojista.nomeDaEmpresa = nomeDaEmpresa;
     return this;
   }
@@ -97,8 +100,9 @@ class LojistaBuider
   }
 
   @override
-  LojistaPedido tipoDeUsuario(TipoDeUsuario tipoDeUsuario) {
-    _lojista.tipoDeUsuario = tipoDeUsuario;
+  LojistaPedido tipoDeUsuario() {
+    _lojista.tipoDeUsuario =
+        TipoDeUsuarioBuilder.instance.descricao(TipoDeUsuario.LOJISTA).build();
     return this;
   }
 }
@@ -112,7 +116,7 @@ abstract class LojistaCelularStatus {
 }
 
 abstract class LojistaTipoDeUsuario {
-  LojistaPedido tipoDeUsuario(TipoDeUsuario tipoDeUsuario);
+  LojistaPedido tipoDeUsuario();
 }
 
 abstract class LojistaPedido {
@@ -140,7 +144,9 @@ abstract class LojistaNomeFantasia {
 }
 
 abstract class LojistaNomeDaEmpresa {
-  LojistaNomeDaEmpresa nomeDaEmpresa(String nomeDaEmpresa);
+  LojistaBuild nomeDaEmpresa(String nomeDaEmpresa);
+}
 
+abstract class LojistaBuild {
   Lojista builder();
 }

@@ -5,8 +5,12 @@ import 'package:levv/model/bo/usuario/usuario.dart';
 import 'celular.dart';
 
 abstract class UsuarioPadrao implements Usuario {
-  late Celular celular;
-  late TipoDeUsuario tipoDeUsuario;
+   Celular? celular;
+   TipoDeUsuario? tipoDeUsuario;
+
+
 }
+
+
 
 

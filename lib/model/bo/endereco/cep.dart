@@ -1,51 +1,38 @@
 import 'package:flutter/material.dart';
 
-class Cep{
-
-  late String _cep;
-  late bool _status;
-
-  static Cep VAZIO = CepBuilder().create();
-
-
-  bool get status => _status;
-
-  set status(bool value) {
-    _status = value;
-  }
-
-  String get cep => _cep;
-
-  set cep(String value) {
-    _cep = value;
-  }
+class Cep {
+  late String cep;
+  late bool status;
 
   @override
   String toString() {
-    return 'Cep ' + _cep;
+    return 'Cep ' + cep;
   }
 }
 
-class CepBuilder{
+class CepBuilder implements CepValor, CepBuild {
+  final Cep _cep = Cep();
 
-  static final Cep _cep = Cep();
+  CepBuilder._();
 
-  CepBuilder(){
-    _cep.cep = "";
-    _cep.status = false;
-  }
+  static CepValor get instance => CepBuilder._();
 
-  CepBuilder comCep(String cep){
-    _cep.cep = cep;
+  @override
+  CepBuild valor(String value) {
+    _cep.cep = value;
     return this;
   }
 
-  CepBuilder comStatus(bool status){
-    _cep.status= status;
-    return this;
-  }
-
-  Cep create(){
+  @override
+  Cep build() {
     return _cep;
   }
+}
+
+abstract class CepValor {
+  CepBuild valor(String value);
+}
+
+abstract class CepBuild {
+  Cep build();
 }

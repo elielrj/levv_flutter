@@ -17,11 +17,11 @@ class VolumeBuilder implements VolumeValor, VolumeBuild {
 
   VolumeBuilder._();
 
-  static VolumeValor get instace => VolumeBuilder._();
+  static VolumeValor get instance => VolumeBuilder._();
 
   @override
   Volume build() {
-    return _volume;
+   return _volume;
   }
 
   @override
@@ -29,6 +29,8 @@ class VolumeBuilder implements VolumeValor, VolumeBuild {
     _volume.valor = valor;
     return this;
   }
+
+
 }
 
 abstract class VolumeValor {

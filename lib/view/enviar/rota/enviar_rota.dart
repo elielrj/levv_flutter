@@ -74,7 +74,7 @@ class _EnviarRotaState extends State<EnviarRota> {
     if (widget.pedido.itensDoPedido.length < 10) {
       setState(() {
 
-        ItemDoPedido itemDoPedido = ItemDoPedido.VAZIO;
+        ItemDoPedido itemDoPedido = ItemDoPedido();
 
         //todo reparar probema de ordem identica
         itemDoPedido.ordem = widget.pedido.itensDoPedido.length + 1;

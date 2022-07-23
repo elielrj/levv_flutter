@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:core';
 import 'package:levv/model/bo/endereco/endereco.dart';
 
 class ItemDoPedido {

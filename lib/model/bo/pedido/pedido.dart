@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:levv/model/bo/meioDeTransprte/meio_de_transporte.dart';
+
+
 import 'package:levv/model/bo/pedido/volume.dart';
-import 'package:levv/model/bo/utilizador/cliente.dart';
+
 
 import '../usuario/usuario.dart';
 import '../utilizador/transportador.dart';
-import 'item_do_pedido.dart';
 import 'Peso.dart';
+import 'item_do_pedido.dart';
+
 
 class Pedido {
   late String numero;
@@ -18,11 +21,17 @@ class Pedido {
   late bool oPedidoFoiEntregue;
   late bool oPedidoEstaPago;
   late MeioDeTransporte meioDeTransporte;
-  late List<ItemDoPedido> itensDoPedido;
+  List<ItemDoPedido> itensDoPedido = [];
   late Usuario usuarioDoPedido;
   late Transportador transportadorDoPedido;
 
   static const QUANTIDADE_MAXIMA_DE_PEDIDOS = 10;
+
+  limparPedido(){
+
+
+
+  }
 }
 
 class PedidoBuilder
@@ -49,7 +58,6 @@ class PedidoBuilder
   @override
   PedidoUsuarioDoPedido adicionarItemNaLIstaDeitensDoPedido(
       ItemDoPedido value) {
-    _pedido.itensDoPedido ??= [];
     _pedido.itensDoPedido.add(value);
     return this;
   }

@@ -22,7 +22,8 @@ class VeiculoBuilder
         VeiculoRenavam,
         VeiculoStatus,
         VeiculoMeioDeTransporte,
-        VeiculoCrlv {
+        VeiculoCrlv,
+        VeiculoBuild {
   final Veiculo _veiculo = Veiculo();
 
   VeiculoBuilder._();
@@ -66,9 +67,14 @@ class VeiculoBuilder
   }
 
   @override
-  VeiculoCrlv crlv(Arquivo crlv) {
+  VeiculoBuild crlv(Arquivo crlv) {
     _veiculo.crlv = crlv;
     return this;
+  }
+
+  @override
+  Veiculo build() {
+   return _veiculo;
   }
 }
 
@@ -97,5 +103,9 @@ abstract class VeiculoMeioDeTransporte {
 }
 
 abstract class VeiculoCrlv {
-  VeiculoCrlv crlv(Arquivo crlv);
+  VeiculoBuild crlv(Arquivo crlv);
+}
+
+abstract class VeiculoBuild {
+  Veiculo build();
 }

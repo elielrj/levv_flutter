@@ -22,7 +22,7 @@ class TelaEnviar extends StatefulWidget {
 
 class _TelaEnviarState extends State<TelaEnviar> {
 
-  Pedido pedido = PedidoBuilder().create();
+  Pedido pedido = Pedido();
 
   final valor = 0.00;
 

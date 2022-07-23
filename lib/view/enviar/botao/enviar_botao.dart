@@ -1,13 +1,12 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../model/bo/pedido/pedido.dart';
 import '../../../model/dao/pedido/pedidoDAO.dart';
 
 class EnviarBotao extends StatefulWidget {
-   EnviarBotao({Key? key, required this.pedido}) : super(key: key);
+  EnviarBotao({Key? key, required this.pedido}) : super(key: key);
 
-   Pedido pedido;
+  Pedido pedido;
 
   @override
   State<EnviarBotao> createState() => _EnviarBotaoState();
@@ -25,8 +24,7 @@ class _EnviarBotaoState extends State<EnviarBotao> {
           TextButton(
             style: TextButton.styleFrom(
               backgroundColor: Colors.white,
-              textStyle:
-              const TextStyle(color: Colors.black, fontSize: 18),
+              textStyle: const TextStyle(color: Colors.black, fontSize: 18),
               padding: const EdgeInsets.all(0),
               minimumSize: const Size(180, 65),
               elevation: 2,
@@ -59,8 +57,7 @@ class _EnviarBotaoState extends State<EnviarBotao> {
           TextButton(
             style: TextButton.styleFrom(
               backgroundColor: Colors.white,
-              textStyle:
-              const TextStyle(color: Colors.black, fontSize: 18),
+              textStyle: const TextStyle(color: Colors.black, fontSize: 18),
               padding: const EdgeInsets.all(0),
               minimumSize: const Size(180, 65),
               elevation: 2,
@@ -94,34 +91,30 @@ class _EnviarBotaoState extends State<EnviarBotao> {
       ),
     );
   }
-//1
-  _navegarParaTelaAcompanharPedido(){
 
-  }
+//1
+  _navegarParaTelaAcompanharPedido() {}
 
   //2
   _enviarPedido() async {
-
-    if(await _criarPedido()){
+    if (await _criarPedido()) {
       _navegarParaTelaAcompanharPedido();
-    }else{
+    } else {
       _exibirMensagemDeErro();
     }
   }
 
   //3
-  Future<bool> _criarPedido()async {
+  Future<bool> _criarPedido() async {
     try {
       PedidoDAO pedidoDAO = PedidoDAO();
-       pedidoDAO.create(widget.pedido);
+      pedidoDAO.create(widget.pedido);
       return true;
-    }catch(e){
+    } catch (e) {
       return false;
     }
   }
 
   //4
-  _exibirMensagemDeErro(){
-
-  }
+  _exibirMensagemDeErro() {}
 }

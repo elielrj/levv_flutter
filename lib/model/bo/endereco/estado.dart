@@ -11,7 +11,8 @@ class Estado {
   }
 }
 
-class EstadoBuilder implements EstadoNome, EstadoSigla, EstadoStatus {
+class EstadoBuilder
+    implements EstadoNome, EstadoSigla, EstadoStatus, EstadoBuild {
   final Estado _estado = Estado();
 
   EstadoBuilder._();
@@ -31,7 +32,7 @@ class EstadoBuilder implements EstadoNome, EstadoSigla, EstadoStatus {
   }
 
   @override
-  status(bool status) {
+  EstadoBuild status(bool status) {
     _estado.status = status;
     return this;
   }
@@ -51,7 +52,9 @@ abstract class EstadoSigla {
 }
 
 abstract class EstadoStatus {
-  EstadoStatus status(bool status);
+  EstadoBuild status(bool status);
+}
 
+abstract class EstadoBuild {
   Estado build();
 }

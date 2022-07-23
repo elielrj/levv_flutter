@@ -72,15 +72,15 @@ class _EnviarPesoState extends State<EnviarPeso> {
     int valor = int.parse(valorNumerico);
 
     setState(() {
-      widget.pedido.peso.peso = valor;
+      widget.pedido.peso.valor = valor;
     });
   }
 
   int _pesoAtual() {
-    if (widget.pedido.peso.peso == null || widget.pedido.peso.peso == 0) {
-      widget.pedido.peso.peso = Peso.PESO_VALOR_1;
+    if (widget.pedido.peso.valor == null || widget.pedido.peso.valor == 0) {
+      widget.pedido.peso.valor = Peso.PESO_VALOR_1;
     }
 
-    return widget.pedido.peso.peso;
+    return widget.pedido.peso.valor;
   }
 }

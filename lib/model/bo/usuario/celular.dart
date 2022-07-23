@@ -1,16 +1,18 @@
-
-
 import '../pedido/pedido.dart';
 
-class Celular {
-
-  late String numero;
-  late bool status;
+ class Celular {
+    String? numero;
+   bool? status;
 
   List<Pedido>? listaDePedidos;
 }
 
-class CelularBuilder implements CelularNumero, CelularStatus, CelularListaDePedidos {
+class CelularBuilder
+    implements
+        CelularNumero,
+        CelularStatus,
+        CelularListaDePedidos,
+        CelularBuild {
   final Celular _celular = Celular();
 
   CelularBuilder._();
@@ -35,23 +37,22 @@ class CelularBuilder implements CelularNumero, CelularStatus, CelularListaDePedi
   }
 
   @override
-  CelularListaDePedidos adicionarListaDePedidos(List<Pedido> lista) {
+  CelularBuild adicionarListaDePedidos(List<Pedido> lista) {
     _celular.listaDePedidos = lista;
     return this;
   }
 
   @override
-  CelularListaDePedidos adicionarPedidoNaLista(Pedido pedido) {
+  CelularBuild adicionarPedidoNaLista(Pedido pedido) {
     _celular.listaDePedidos ??= [];
     _celular.listaDePedidos!.add(pedido);
     return this;
   }
 
   @override
-  CelularListaDePedidos semListaDePedidos() {
+  CelularBuild semListaDePedidos() {
     return this;
   }
-
 }
 
 abstract class CelularNumero {
@@ -62,9 +63,14 @@ abstract class CelularStatus {
   CelularListaDePedidos status(bool status);
 }
 
-abstract class CelularListaDePedidos{
-  CelularListaDePedidos adicionarPedidoNaLista(Pedido pedido);
-  CelularListaDePedidos adicionarListaDePedidos(List<Pedido> lista);
-  CelularListaDePedidos semListaDePedidos();
+abstract class CelularListaDePedidos {
+  CelularBuild adicionarPedidoNaLista(Pedido pedido);
+
+  CelularBuild adicionarListaDePedidos(List<Pedido> lista);
+
+  CelularBuild semListaDePedidos();
+}
+
+abstract class CelularBuild {
   Celular build();
 }

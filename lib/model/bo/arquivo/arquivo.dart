@@ -2,31 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:levv/view/frontend/image_levv.dart';
 
 class Arquivo {
-  late Image _documento;
-  late String _descricao;
-  late bool _status;
-
-  String get descricao => _descricao;
-
-  set descricao(String value) {
-    _descricao = value;
-  }
-
-  Image get documento => _documento;
-
-  set documento(Image value) {
-    _documento = value;
-  }
-
-  bool get status => _status;
-
-  set status(bool value) {
-    _status = value;
-  }
+  late Image documento;
+  late String descricao;
+  late bool status;
 }
 
 class ArquivoBuilder
-    implements ArquivoDocumento, ArquivoDescricao, ArquivoStatus {
+    implements ArquivoDocumento, ArquivoDescricao, ArquivoStatus, ArquivoBuild {
   final Arquivo _arquivo = Arquivo();
 
   ArquivoBuilder._();
@@ -51,7 +33,7 @@ class ArquivoBuilder
   }
 
   @override
-  ArquivoStatus status(bool status) {
+  ArquivoBuild status(bool status) {
     _arquivo.status = status;
     return this;
   }
@@ -66,7 +48,9 @@ abstract class ArquivoDescricao {
 }
 
 abstract class ArquivoStatus {
-  ArquivoStatus status(bool status);
+  ArquivoBuild status(bool status);
+}
 
+abstract class ArquivoBuild {
   Arquivo build();
 }

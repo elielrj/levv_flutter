@@ -28,7 +28,7 @@ class _TelaHomeState extends State<TelaHome> {
               width: 10,
             ),
             const Icon(Icons.admin_panel_settings),
-            Text(widget.usuario.tipoDeUsuario.exibirPerfil()),
+            Text(widget.usuario.buscarTipoDeUsuario().exibirPerfil()),
           ],
         ),
         actions: const [

@@ -4,7 +4,9 @@ import 'package:levv/model/bo/utilizador/cliente.dart';
 import '../endereco/endereco.dart';
 import '../pedido/pedido.dart';
 
-class Administrador extends Cliente {}
+class Administrador extends Cliente {
+
+}
 
 class AdministradorBuilder
     implements
@@ -17,7 +19,8 @@ class AdministradorBuilder
         AdministradorDataDeNascimento,
         AdministradorEnderecoCasa,
         AdministradorEnderecoTrabalho,
-        AdministradorPedido {
+        AdministradorPedido,
+        AdministradorBuild {
   final Administrador _administrador = Administrador();
 
   AdministradorBuilder._();
@@ -25,13 +28,13 @@ class AdministradorBuilder
   static AdministradorCelularNumero get instance => AdministradorBuilder._();
 
   @override
-  AdministradorPedido adicionarLista(List<Pedido> pedidos) {
+  AdministradorBuild adicionarLista(List<Pedido> pedidos) {
     _administrador.celular.listaDePedidos = pedidos;
     return this;
   }
 
   @override
-  AdministradorPedido adicionarPedidos(Pedido pedido) {
+  AdministradorBuild adicionarPedidos(Pedido pedido) {
     _administrador.celular.listaDePedidos ??= [];
     _administrador.celular.listaDePedidos!.add(pedido);
     return this;
@@ -89,7 +92,7 @@ class AdministradorBuilder
   }
 
   @override
-  AdministradorPedido semLista() {
+  AdministradorBuild semLista() {
     return this;
   }
 
@@ -106,8 +109,10 @@ class AdministradorBuilder
   }
 
   @override
-  AdministradorNome tipoDeUsuario(TipoDeUsuario tipoDeUsuario) {
-    _administrador.tipoDeUsuario = tipoDeUsuario;
+  AdministradorNome tipoDeUsuario() {
+    _administrador.tipoDeUsuario = TipoDeUsuarioBuilder.instance
+        .descricao(TipoDeUsuario.ADMINISTRADOR)
+        .build();
     return this;
   }
 }
@@ -121,7 +126,7 @@ abstract class AdministradorCelularStatus {
 }
 
 abstract class AdministradorTipoDeUsuario {
-  AdministradorNome tipoDeUsuario(TipoDeUsuario tipoDeUsuario);
+  AdministradorNome tipoDeUsuario();
 }
 
 abstract class AdministradorNome {
@@ -153,11 +158,13 @@ abstract class AdministradorEnderecoTrabalho {
 }
 
 abstract class AdministradorPedido {
-  AdministradorPedido adicionarLista(List<Pedido> pedidos);
+  AdministradorBuild adicionarLista(List<Pedido> pedidos);
 
-  AdministradorPedido adicionarPedidos(Pedido pedido);
+  AdministradorBuild adicionarPedidos(Pedido pedido);
 
-  AdministradorPedido semLista();
+  AdministradorBuild semLista();
+}
 
+abstract class AdministradorBuild {
   Administrador build();
 }

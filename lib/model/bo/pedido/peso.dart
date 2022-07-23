@@ -68,14 +68,14 @@ class PesoBuilder implements PesoValor, PesoBuild {
   }
 
   @override
-  PesoBuild valor(int valor) {
+  PesoBuild valorDoPeso(int valor) {
     _peso.valor = valor;
     return this;
   }
 }
 
 abstract class PesoValor {
-  PesoBuild valor(int valor);
+  PesoBuild valorDoPeso(int valor);
 }
 
 abstract class PesoBuild {

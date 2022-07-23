@@ -4,7 +4,15 @@ import 'package:levv/model/bo/usuario/tipo_de_usuario.dart';
 import 'package:levv/model/bo/usuario/usuario.dart';
 import 'package:levv/model/bo/usuario/usuario_padrao.dart';
 
-class Acompanhador extends UsuarioPadrao implements Usuario {}
+class Acompanhador extends UsuarioPadrao implements Usuario {
+
+
+
+  @override
+  TipoDeUsuario buscarTipoDeUsuario() {
+    return tipoDeUsuario ?? TipoDeUsuarioBuilder.instance.descricao(TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO).build();
+  }
+}
 
 class AcompanhadorBuilder
     implements
@@ -37,8 +45,11 @@ class AcompanhadorBuilder
   }
 
   @override
-  AcompanhadorPedido tipoDeUsuario(TipoDeUsuario tipoDeUsuario) {
-    _acompanhador.tipoDeUsuario = tipoDeUsuario;
+  AcompanhadorPedido tipoDeUsuario() {
+    _acompanhador.tipoDeUsuario = TipoDeUsuarioBuilder.instance
+        .descricao(TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO)
+        .build();
+    ;
     return this;
   }
 
@@ -70,7 +81,7 @@ abstract class AcompanhadorCelularStatus {
 }
 
 abstract class AcompanhadorCelularTipoDeUsuario {
-  AcompanhadorPedido tipoDeUsuario(TipoDeUsuario tipoDeUsuario);
+  AcompanhadorPedido tipoDeUsuario();
 }
 
 abstract class AcompanhadorPedido {

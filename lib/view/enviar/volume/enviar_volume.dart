@@ -58,15 +58,15 @@ class _EnviarVolumeState extends State<EnviarVolume> {
 
   _selecionarVolume(var value) {
     setState(() {
-      widget.pedido.volume.volume = int.parse(value.toString());
+      widget.pedido.volume.valor = int.parse(value.toString());
     });
   }
 
   int _volumeAtual() {
-    if (widget.pedido.volume.volume == null ||
-        widget.pedido.volume.volume == 0) {
-      widget.pedido.volume.volume = Volume.VOLUME_VALOR_20_POR_20;
+    if (widget.pedido.volume.valor == null ||
+        widget.pedido.volume.valor == 0) {
+      widget.pedido.volume.valor = Volume.VOLUME_VALOR_20_POR_20;
     }
-    return widget.pedido.volume.volume;
+    return widget.pedido.volume.valor;
   }
 }

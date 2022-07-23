@@ -12,7 +12,8 @@ class Cidade {
   }
 }
 
-class CidadeBuilder implements CidadeNome, CidadeEstado, CidadeStatus {
+class CidadeBuilder
+    implements CidadeNome, CidadeEstado, CidadeStatus, CidadeBuild {
   final Cidade _cidade = Cidade();
 
   CidadeBuilder._();
@@ -37,7 +38,7 @@ class CidadeBuilder implements CidadeNome, CidadeEstado, CidadeStatus {
   }
 
   @override
-  CidadeStatus status(bool status) {
+  CidadeBuild status(bool status) {
     _cidade.status = status;
     return this;
   }
@@ -52,7 +53,9 @@ abstract class CidadeEstado {
 }
 
 abstract class CidadeStatus {
-  CidadeStatus status(bool status);
+  CidadeBuild status(bool status);
+}
 
+abstract class CidadeBuild {
   Cidade build();
 }

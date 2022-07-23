@@ -14,12 +14,13 @@ class Bairro {
   }
 }
 
-class BairroBuilder implements BairroNome, BairroCidade, BairroStatus {
-   final Bairro _bairro = Bairro();
+class BairroBuilder
+    implements BairroNome, BairroCidade, BairroStatus, BairroBuild {
+  final Bairro _bairro = Bairro();
 
-   BairroBuilder._();
+  BairroBuilder._();
 
-   static BairroNome get instance => BairroBuilder._();
+  static BairroNome get instance => BairroBuilder._();
 
   @override
   BairroCidade nome(String nome) {
@@ -28,7 +29,7 @@ class BairroBuilder implements BairroNome, BairroCidade, BairroStatus {
   }
 
   @override
-  BairroCidade cidade(Cidade cidade) {
+  BairroStatus cidade(Cidade cidade) {
     _bairro.cidade = cidade;
     return this;
   }
@@ -39,23 +40,24 @@ class BairroBuilder implements BairroNome, BairroCidade, BairroStatus {
   }
 
   @override
-  BairroStatus status(bool status) {
+  BairroBuild status(bool status) {
     _bairro.status = status;
     return this;
   }
-
 }
 
-abstract class BairroNome{
+abstract class BairroNome {
   BairroCidade nome(String nome);
-
 }
 
-abstract class BairroCidade{
- BairroCidade cidade(Cidade cidade);
+abstract class BairroCidade {
+  BairroStatus cidade(Cidade cidade);
 }
 
-abstract class BairroStatus{
-  BairroStatus status(bool status);
+abstract class BairroStatus {
+  BairroBuild status(bool status);
+}
+
+abstract class BairroBuild {
   Bairro build();
 }

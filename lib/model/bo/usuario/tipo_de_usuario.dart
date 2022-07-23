@@ -7,10 +7,10 @@ class TipoDeUsuario {
   static const String TRANSPORTADOR = "entregador";
   static const String LOJISTA = "lojista";
 
-  late String _tipo;
+  late String tipo;
 
   String exibirPerfil() {
-    return _tipo.toString().toUpperCase().replaceAll("_", " ");
+    return tipo.toString().toUpperCase().replaceAll("_", " ");
   }
 }
 
@@ -29,7 +29,7 @@ class TipoDeUsuarioBuilder
 
   @override
   TipoDeUsuarioBuild descricao(String value) {
-    _tipoDeUsuario._tipo = value;
+    _tipoDeUsuario.tipo = value;
     return this;
   }
 }

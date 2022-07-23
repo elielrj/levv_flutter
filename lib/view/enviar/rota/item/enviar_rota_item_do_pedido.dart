@@ -147,24 +147,7 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
 
     //todo buscar objeto Endereço com o valor digitado
 
-    Endereco endereco = EnderecoBuilder()
-        .comCep(CepBuilder().comCep("").create())
-        .comGeologalizacao(const GeoPoint(0, 0))
-        .comLogradouro(enderecoDigitado)
-        .comNumero("")
-        .comBairro(BairroBuilder()
-            .nomeDoBairro("")
-            .pertenceACidade(CidadeBuilder()
-                .comNome("")
-                .pertenceAoEstado(EstadoBuilder.instance.nome("").sigla("").status(false).build())
-                .create())
-            .create())
-        .create();
-
-    Estado estado = EstadoBuilder.instance.nome("").sigla("").status(false).build();
-
-    Cidade cidade = CidadeBuilder.instance.nome("").estado(estado).status(false).build();
-
+    Endereco endereco = Endereco();
 
     widget.itemDoPedido.coleta = endereco;
   }
@@ -174,19 +157,7 @@ class _EnviarRotaItemDoPedidoState extends State<EnviarRotaItemDoPedido> {
 
     //todo buscar objeto Endereço com o valor digitado
 
-    Endereco endereco = EnderecoBuilder()
-        .comCep(CepBuilder().comCep("").create())
-        .comGeologalizacao(const GeoPoint(0, 0))
-        .comLogradouro(enderecoDigitado)
-        .comNumero("")
-        .comBairro(BairroBuilder()
-            .nomeDoBairro("")
-            .pertenceACidade(CidadeBuilder()
-                .comNome("")
-                .pertenceAoEstado(EstadoBuilder.instance.nome("").sigla("").status(false).build())
-                .create())
-            .create())
-        .create();
+    Endereco endereco = Endereco();
 
     widget.itemDoPedido.coleta = endereco;
   }
