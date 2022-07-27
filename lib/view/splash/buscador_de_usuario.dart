@@ -10,7 +10,7 @@ import 'package:levv/model/bo/endereco/endereco.dart';
 import 'package:levv/model/bo/endereco/estado.dart';
 import 'package:levv/model/bo/endereco/tipo_de_imovel.dart';
 import 'package:levv/model/bo/meioDeTransprte/meio_de_transporte.dart';
-import 'package:levv/model/bo/pedido/peso.dart';
+import 'package:levv/model/bo/pedido/Peso.dart';
 import 'package:levv/model/bo/pedido/volume.dart';
 import 'package:levv/model/bo/usuario/celular.dart';
 import 'package:levv/model/bo/utilizador/administrador.dart';
@@ -60,11 +60,11 @@ class BuscadorDeUsuario {
 
     String celular = await _preferencesLevv.buscarCelular();
 
-
+    Celular objeto = CelularBuilder.instance.numero(celular).status(true).semListaDePedidos().build();
 
     return AcompanhadorBuilder.instance
-        .numeroDeCelular(celular)
-        .status(false)
+        .celular(objeto)
+        .semStatus()
         .tipoDeUsuario()
         .semLista()
         .build();

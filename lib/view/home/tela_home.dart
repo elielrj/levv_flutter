@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:levv/model/bo/usuario/usuario.dart';
+import 'package:levv/view/enviar/tela_enviar.dart';
 import 'package:levv/view/frontend/colors_levv.dart';
 import 'package:levv/view/frontend/image_levv.dart';
 import 'package:levv/view/frontend/route_levv.dart';
@@ -198,7 +199,14 @@ class _TelaHomeState extends State<TelaHome> {
   }
 
   _navegarParaTelaEnviar() {
-    Navigator.pushNamed(context, RouteLevv.TELA_ENVIAR);
+   // Navigator.pushNamed(context, RouteLevv.TELA_ENVIAR);
+
+    Navigator.push(
+        context, MaterialPageRoute(
+        builder: (context) => TelaEnviar(usuario: widget.usuario)
+    )
+    );
+
   }
 
   _navegarParaTelaAcompanhar() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:levv/model/bo/arquivo/Arquivo.dart';
-import 'package:levv/model/bo/pedido/peso.dart';
+import 'package:levv/model/bo/pedido/Peso.dart';
 
 import '../pedido/volume.dart';
 

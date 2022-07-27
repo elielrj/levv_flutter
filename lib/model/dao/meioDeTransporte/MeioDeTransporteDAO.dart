@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:levv/model/bo/meioDeTransprte/meio_de_transporte.dart';
-import 'package:levv/model/bo/pedido/peso.dart';
+import 'package:levv/model/bo/pedido/Peso.dart';
 import 'package:levv/model/bo/pedido/volume.dart';
 import 'package:levv/model/dao/CrudDAO.dart';
 

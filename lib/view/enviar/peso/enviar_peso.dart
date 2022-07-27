@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:levv/view/frontend/text_levv.dart';
 
 import '../../../model/bo/pedido/pedido.dart';
-import '../../../model/bo/pedido/peso.dart';
+import '../../../model/bo/pedido/Peso.dart';
 
 class EnviarPeso extends StatefulWidget {
   EnviarPeso({Key? key, required this.pedido}) : super(key: key);
@@ -77,9 +77,6 @@ class _EnviarPesoState extends State<EnviarPeso> {
   }
 
   int _pesoAtual() {
-    if (widget.pedido.peso.valor == null || widget.pedido.peso.valor == 0) {
-      widget.pedido.peso.valor = Peso.PESO_VALOR_1;
-    }
 
     return widget.pedido.peso.valor;
   }

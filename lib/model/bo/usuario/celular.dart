@@ -1,8 +1,8 @@
 import '../pedido/pedido.dart';
 
- class Celular {
-    String? numero;
-   bool? status;
+class Celular {
+  late String numero;
+  late bool status;
 
   List<Pedido>? listaDePedidos;
 }

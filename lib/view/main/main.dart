@@ -35,7 +35,7 @@ void main() {
       RouteLevv.TELA_CADASTRAR_ENDERECO: (context) =>
           const TelaCadastrarEndereco(),
       RouteLevv.TELA_ACOMPANHAR: (context) => const TelaAcompanhar(),
-      RouteLevv.TELA_ENVIAR: (context) => const TelaEnviar(),
+      //RouteLevv.TELA_ENVIAR: (context) => TelaEnviar(),
       RouteLevv.TELA_ENTREGAR: (context) => const TelaEntregar(),
     },
      home: const TelaSplash(), //1º

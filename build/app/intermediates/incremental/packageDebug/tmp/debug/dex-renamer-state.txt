@@ -1,4 +1,4 @@
-#Fri Jul 22 22:46:26 BRT 2022
+#Sun Jul 24 23:46:25 BRT 2022
 base.2=C\:\\App\\flutter\\levv\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
 base.1=C\:\\App\\flutter\\levv\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex

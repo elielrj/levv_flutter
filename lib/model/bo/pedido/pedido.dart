@@ -23,7 +23,7 @@ class Pedido {
   late MeioDeTransporte meioDeTransporte;
   List<ItemDoPedido> itensDoPedido = [];
   late Usuario usuarioDoPedido;
-  late Transportador transportadorDoPedido;
+  late Transportador? transportadorDoPedido;
 
   static const QUANTIDADE_MAXIMA_DE_PEDIDOS = 10;
 
@@ -53,7 +53,7 @@ class PedidoBuilder
 
   PedidoBuilder._();
 
-  static PedidoUsuarioDoPedido get instance => PedidoBuilder._();
+  static PedidoNumero get instance => PedidoBuilder._();
 
   @override
   PedidoUsuarioDoPedido adicionarItemNaLIstaDeitensDoPedido(
@@ -152,6 +152,7 @@ class PedidoBuilder
     return this;
   }
 
+
   @override
   Pedido build() {
     return _pedido;
@@ -159,6 +160,7 @@ class PedidoBuilder
 
   @override
   PedidoBuild semTransportadorDoPedido() {
+    _pedido.transportadorDoPedido = null;
     return this;
   }
 }

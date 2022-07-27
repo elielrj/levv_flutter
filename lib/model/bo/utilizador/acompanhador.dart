@@ -10,7 +10,9 @@ class Acompanhador extends UsuarioPadrao implements Usuario {
 
   @override
   TipoDeUsuario buscarTipoDeUsuario() {
-    return tipoDeUsuario ?? TipoDeUsuarioBuilder.instance.descricao(TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO).build();
+
+    return tipoDeUsuario;
+
   }
 }
 
@@ -49,7 +51,6 @@ class AcompanhadorBuilder
     _acompanhador.tipoDeUsuario = TipoDeUsuarioBuilder.instance
         .descricao(TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO)
         .build();
-    ;
     return this;
   }
 
@@ -68,16 +69,31 @@ class AcompanhadorBuilder
 
   @override
   AcompanhadorBuild semLista() {
+    _acompanhador.celular.listaDePedidos ??=[];
     return this;
+  }
+
+  @override
+  celular(Celular celular) {
+   _acompanhador.celular = celular;
+   return this;
+  }
+
+  @override
+  AcompanhadorCelularTipoDeUsuario semStatus() {
+   return this;
   }
 }
 
 abstract class AcompanhadorCelularNumero {
-  AcompanhadorCelularStatus numeroDeCelular(String numero);
+  //AcompanhadorCelularStatus numeroDeCelular(String numero);
+  AcompanhadorCelularStatus celular(Celular celular);
 }
 
 abstract class AcompanhadorCelularStatus {
-  AcompanhadorCelularTipoDeUsuario status(bool celular);
+  //AcompanhadorCelularTipoDeUsuario status(bool celular);
+  AcompanhadorCelularTipoDeUsuario semStatus();
+
 }
 
 abstract class AcompanhadorCelularTipoDeUsuario {
