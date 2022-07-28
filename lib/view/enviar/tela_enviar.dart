@@ -10,7 +10,7 @@ import 'package:levv/model/bo/endereco/tipo_de_imovel.dart';
 import 'package:levv/model/bo/meioDeTransprte/meio_de_transporte.dart';
 import 'package:levv/model/bo/pedido/item_do_pedido.dart';
 import 'package:levv/model/bo/pedido/volume.dart';
-import 'package:levv/model/bo/usuario/tipo_de_usuario.dart';
+import 'package:levv/model/bo/usuario/perfil/perfil.dart';
 import 'package:levv/model/bo/usuario/usuario.dart';
 import 'package:levv/view/enviar/botao/enviar_botao.dart';
 import 'package:levv/view/enviar/meio_de_transporte/enviar_meio_de_transporte.dart';
@@ -112,7 +112,7 @@ class _TelaEnviarState extends State<TelaEnviar> {
     List<ItemDoPedido> listaDeItens = [];
 
     TipoDeImovel tipoDeImovel =
-        TipoDeImovelBuilder.instance.tipo(TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO).build();
+        TipoDeImovelBuilder.instance.tipo(TipoDeImovel.LOJA).build();
 
     Endereco endereco = EnderecoBuilder.instance
         .apelido("Casa")

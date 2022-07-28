@@ -1,18 +1,29 @@
 import 'dart:async';
-import 'package:levv/model/bo/usuario/tipo_de_usuario.dart';
+import 'package:levv/model/bo/usuario/perfil/acompanhar.dart';
+import 'package:levv/model/bo/usuario/perfil/administrar.dart';
+import 'package:levv/model/bo/usuario/perfil/entregar.dart';
+import 'package:levv/model/bo/usuario/perfil/enviar.dart';
+import 'package:levv/model/bo/usuario/perfil/perfil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesLevv {
   static const String _CELULAR = "celular";
-  static const String _TIPO_DE_USUARIO = "tipo_de_usuario";
+  static const String _PERFIL = "peril";
 
-  Future<TipoDeUsuario> buscarTipoDeUsuario() async {
+  Future<Perfil> buscarPerfil() async {
     final prefs = await SharedPreferences.getInstance();
 
-    String tipo = prefs.getString(_TIPO_DE_USUARIO) ??
-        TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO;
+    String perfil = prefs.getString(_PERFIL) ?? Acompanhar.ACOMPANHAR;
 
-    return TipoDeUsuarioBuilder.instance.descricao(tipo).build();
+    if (perfil == Enviar.ENVIAR) {
+      return Acompanhar();
+    } else if (perfil == Entregar.ENTREGAR) {
+      return Entregar();
+    } else if (perfil == Administrar.ADMINISTRAR) {
+      return Administrar();
+    } else {
+      return Enviar();
+    }
   }
 
   /// retorna uma strig vazia, caso não esteja cadastrado
@@ -22,10 +33,10 @@ class PreferencesLevv {
     return prefs.getString(_CELULAR) ?? "";
   }
 
-  Future<void> salvarTipoDeUsuario(TipoDeUsuario tipoDeUsuario) async {
+  Future<void> salvarPerfil(Perfil perfil) async {
     final prefs = await SharedPreferences.getInstance();
 
-    await prefs.setString(_TIPO_DE_USUARIO, tipoDeUsuario.tipo);
+    await prefs.setString(_PERFIL, perfil.exibirPerfil());
   }
 
   Future<void> salvarCelular(String celular) async {

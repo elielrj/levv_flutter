@@ -1,170 +1,20 @@
-import 'package:levv/model/bo/usuario/tipo_de_usuario.dart';
+import 'package:levv/model/bo/usuario/celular.dart';
+import 'package:levv/model/bo/usuario/perfil/perfil.dart';
 import 'package:levv/model/bo/utilizador/cliente.dart';
 
 import '../endereco/endereco.dart';
 import '../pedido/pedido.dart';
 
 class Administrador extends Cliente {
-
-}
-
-class AdministradorBuilder
-    implements
-        AdministradorCelularNumero,
-        AdministradorCelularStatus,
-        AdministradorTipoDeUsuario,
-        AdministradorNome,
-        AdministradorSobrenome,
-        AdministradorCpf,
-        AdministradorDataDeNascimento,
-        AdministradorEnderecoCasa,
-        AdministradorEnderecoTrabalho,
-        AdministradorPedido,
-        AdministradorBuild {
-  final Administrador _administrador = Administrador();
-
-  AdministradorBuilder._();
-
-  static AdministradorCelularNumero get instance => AdministradorBuilder._();
-
-  @override
-  AdministradorBuild adicionarLista(List<Pedido> pedidos) {
-    _administrador.celular.listaDePedidos = pedidos;
-    return this;
-  }
-
-  @override
-  AdministradorBuild adicionarPedidos(Pedido pedido) {
-    _administrador.celular.listaDePedidos ??= [];
-    _administrador.celular.listaDePedidos!.add(pedido);
-    return this;
-  }
-
-  @override
-  Administrador build() {
-    return _administrador;
-  }
-
-  @override
-  AdministradorDataDeNascimento cpf(String cpf) {
-    _administrador.cpf = cpf;
-    return this;
-  }
-
-  @override
-  AdministradorEnderecoTrabalho enderecoCasa(Endereco endereco) {
-    _administrador.enderecoCasa = endereco;
-    return this;
-  }
-
-  @override
-  AdministradorPedido enderecoTrabalho(Endereco endereco) {
-    _administrador.enderecoTrabalho = endereco;
-    return this;
-  }
-
-  @override
-  AdministradorEnderecoCasa nascimento(DateTime nascimento) {
-    _administrador.nascimento = nascimento;
-    return this;
-  }
-
-  @override
-  AdministradorSobrenome nome(String nome) {
-    _administrador.nome = nome;
-    return this;
-  }
-
-  @override
-  AdministradorCelularStatus numeroDeCelular(String numero) {
-    _administrador.celular.numero = numero;
-    return this;
-  }
-
-  @override
-  AdministradorEnderecoTrabalho semEnderecoCasa() {
-    return this;
-  }
-
-  @override
-  AdministradorPedido semEnderecoTrabalho() {
-    return this;
-  }
-
-  @override
-  AdministradorBuild semLista() {
-    return this;
-  }
-
-  @override
-  AdministradorCpf sobrenome(String sobrenome) {
-    _administrador.sobrenome = sobrenome;
-    return this;
-  }
-
-  @override
-  AdministradorTipoDeUsuario status(bool celular) {
-    _administrador.celular.status = celular;
-    return this;
-  }
-
-  @override
-  AdministradorNome tipoDeUsuario() {
-    _administrador.tipoDeUsuario = TipoDeUsuarioBuilder.instance
-        .descricao(TipoDeUsuario.ADMINISTRADOR)
-        .build();
-    return this;
-  }
-}
-
-abstract class AdministradorCelularNumero {
-  AdministradorCelularStatus numeroDeCelular(String numero);
-}
-
-abstract class AdministradorCelularStatus {
-  AdministradorTipoDeUsuario status(bool celular);
-}
-
-abstract class AdministradorTipoDeUsuario {
-  AdministradorNome tipoDeUsuario();
-}
-
-abstract class AdministradorNome {
-  AdministradorSobrenome nome(String nome);
-}
-
-abstract class AdministradorSobrenome {
-  AdministradorCpf sobrenome(String sobrenome);
-}
-
-abstract class AdministradorCpf {
-  AdministradorDataDeNascimento cpf(String cpf);
-}
-
-abstract class AdministradorDataDeNascimento {
-  AdministradorEnderecoCasa nascimento(DateTime nascimento);
-}
-
-abstract class AdministradorEnderecoCasa {
-  AdministradorEnderecoTrabalho enderecoCasa(Endereco endereco);
-
-  AdministradorEnderecoTrabalho semEnderecoCasa();
-}
-
-abstract class AdministradorEnderecoTrabalho {
-  AdministradorPedido enderecoTrabalho(Endereco endereco);
-
-  AdministradorPedido semEnderecoTrabalho();
-}
-
-abstract class AdministradorPedido {
-  AdministradorBuild adicionarLista(List<Pedido> pedidos);
-
-  AdministradorBuild adicionarPedidos(Pedido pedido);
-
-  AdministradorBuild semLista();
-}
-
-abstract class AdministradorBuild {
-  Administrador build();
+  Administrador(
+      Perfil perfil,
+      Celular celular,
+      String nome,
+      String sobrenome,
+      String cpf,
+      DateTime nascimento,
+      Endereco? enderecoCasa,
+      Endereco? enderecoTrabalho)
+      : super(perfil, celular, nome, sobrenome, cpf, nascimento, enderecoCasa,
+            enderecoTrabalho);
 }

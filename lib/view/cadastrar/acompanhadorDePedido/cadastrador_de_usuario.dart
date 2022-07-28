@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:levv/model/bo/usuario/perfil/acompanhar.dart';
 
-import '../../../model/bo/usuario/tipo_de_usuario.dart';
+import '../../../model/bo/usuario/perfil/perfil.dart';
 import '../../../model/dao/backend/PreferencesLevv.dart';
 
 class CadastradorDeUsuario {
@@ -15,7 +16,7 @@ class CadastradorDeUsuario {
 
       //mandar código de confirmação p/ cadastrar celular
 
-      _salvarTipoDeUsuario();
+      _salvarPerfil();
       _salvarCelular(celular);
       //cadastrar
       const Duration(seconds: 1);
@@ -27,12 +28,11 @@ class CadastradorDeUsuario {
   }
 
   //2
-  Future<void> _salvarTipoDeUsuario() async {
-    TipoDeUsuario tipoDeUsuario = TipoDeUsuarioBuilder.instance
-        .descricao(TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO)
-        .build();
+  Future<void> _salvarPerfil() async {
 
-    await _preferencesLevv.salvarTipoDeUsuario(tipoDeUsuario);
+    Perfil perfil = Acompanhar();
+
+    await _preferencesLevv.salvarPerfil(perfil);
   }
 
   //3

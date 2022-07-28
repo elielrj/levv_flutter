@@ -13,14 +13,17 @@ import 'package:levv/model/bo/meioDeTransprte/meio_de_transporte.dart';
 import 'package:levv/model/bo/pedido/Peso.dart';
 import 'package:levv/model/bo/pedido/volume.dart';
 import 'package:levv/model/bo/usuario/celular.dart';
+import 'package:levv/model/bo/usuario/perfil/acompanhar.dart';
+import 'package:levv/model/bo/usuario/perfil/entregar.dart';
+import 'package:levv/model/bo/usuario/perfil/enviar.dart';
 import 'package:levv/model/bo/utilizador/administrador.dart';
 import 'package:levv/model/bo/utilizador/cliente.dart';
 import 'package:levv/model/bo/utilizador/lojista.dart';
 import 'package:levv/model/bo/utilizador/transportador.dart';
 import 'package:levv/model/bo/veiculo/veiculo.dart';
 import 'package:levv/view/frontend/image_levv.dart';
-import '../../model/bo/usuario/tipo_de_usuario.dart';
-import '../../model/bo/utilizador/acompanhador.dart';
+import '../../model/bo/usuario/perfil/entregar.dart';
+import '../../model/bo/usuario/perfil/perfil.dart';
 import 'package:levv/model/dao/backend/PreferencesLevv.dart';
 
 class BuscadorDeUsuario {
@@ -38,41 +41,39 @@ class BuscadorDeUsuario {
 
   //2
   Future<dynamic> buscarUsuarioCadastrado() async {
-    TipoDeUsuario _tipoDeUsuario = await _preferencesLevv.buscarTipoDeUsuario();
+    Perfil _perfil = await _preferencesLevv.buscarPerfil();
 
-    switch (_tipoDeUsuario.tipo) {
-      case TipoDeUsuario.ACOMPANHADOR_DO_PEDIDO:
+    switch (_perfil.exibirPerfil()) {
+      case Acompanhar.ACOMPANHAR:
         return await _recuperarUsuarioDoTipoAcompanhadorDoPedido();
-      case TipoDeUsuario.ADMINISTRADOR:
+      case Enviar.ENVIAR:
         return await _recuperarUsuarioDoTipoAdministrador();
-      case TipoDeUsuario.CLIENTE:
+      case Entregar.ENTREGAR:
         return await _recuperarUsuarioDoTipoCliente();
-      case TipoDeUsuario.TRANSPORTADOR:
-        return await _recuperarUsuarioDoTipoTransportador();
-      case TipoDeUsuario.LOJISTA:
-        return await _recuperarUsuarioDoTipoLojista();
+
     }
   }
 
   //3 todo retirar p/ dao
-  Future<Acompanhador> _recuperarUsuarioDoTipoAcompanhadorDoPedido() async {
+  Future<void> _recuperarUsuarioDoTipoAcompanhadorDoPedido() async {
     //todo criar DAO
 
     String celular = await _preferencesLevv.buscarCelular();
 
     Celular objeto = CelularBuilder.instance.numero(celular).status(true).semListaDePedidos().build();
-
+/*
     return AcompanhadorBuilder.instance
         .celular(objeto)
         .semStatus()
         .tipoDeUsuario()
         .semLista()
-        .build();
+        .build();*/
   }
 
   //4 todo retirar p/ dao
-  Future<Administrador> _recuperarUsuarioDoTipoAdministrador() async {
+  Future<void> _recuperarUsuarioDoTipoAdministrador() async {
     //todo criar DAO
+    /*
     return AdministradorBuilder.instance
         .numeroDeCelular("0000-0002")
         .status(false)
@@ -87,8 +88,8 @@ class BuscadorDeUsuario {
             .numero("458")
             .complemento("Apt")
             .status(true)
-            .tipoDeImovel(TipoDeUsuarioBuilder.instance
-                .descricao(TipoDeImovel.APT)
+            .tipoDeImovel(TipoDeImovelBuilder.instance
+                .tipo(TipoDeImovel.APT)
                 .build())
             .bairro(BairroBuilder.instance
                 .nome("Centro")
@@ -132,11 +133,14 @@ class BuscadorDeUsuario {
             .build())
         .semLista()
         .build();
+        */
+
   }
 
   //5 todo retirar p/ dao
-  Future<Cliente> _recuperarUsuarioDoTipoCliente() async {
+  Future<void> _recuperarUsuarioDoTipoCliente() async {
     //todo criar DAO
+    /*
     return ClienteBuilder.instance
         .numeroDeCelular("0000-0002")
         .status(false)
@@ -151,8 +155,8 @@ class BuscadorDeUsuario {
             .numero("458")
             .complemento("Apt")
             .status(true)
-            .tipoDeImovel(TipoDeUsuarioBuilder.instance
-                .descricao(TipoDeImovel.APT)
+            .tipoDeImovel(TipoDeImovelBuilder.instance
+                .tipo(TipoDeImovel.APT)
                 .build())
             .bairro(BairroBuilder.instance
                 .nome("Centro")
@@ -195,12 +199,13 @@ class BuscadorDeUsuario {
             .geoPoint(const GeoPoint(0.0, 0.0))
             .build())
         .semLista()
-        .build();
+        .build();*/
   }
 
   //6 todo retirar p/ dao
-  Future<Transportador> _recuperarUsuarioDoTipoTransportador() async {
+  Future<void> _recuperarUsuarioDoTipoTransportador() async {
     //todo criar DAO
+    /*
     return TransportadorBuilder.instance
         .numeroDeCelular("(48) 9 9157-7468")
         .status(false)
@@ -241,11 +246,12 @@ class BuscadorDeUsuario {
                 .build())
             .build())
         .semLista()
-        .build();
+        .build();*/
   }
 
   //7 todo retirar p/ dao
-  Future<Lojista> _recuperarUsuarioDoTipoLojista() async {
+  Future<void> _recuperarUsuarioDoTipoLojista() async {
+    /*
     //todo criar DAO
     return LojistaBuider.instance
         .numeroDeCelular("(48)9 9157-7468")
@@ -256,6 +262,6 @@ class BuscadorDeUsuario {
         .cnpj("12.123.098/0001-00")
         .nomeFantasia("Senhorita Luxo")
         .nomeDaEmpresa("Senhorita luxo acessorios")
-        .builder();
+        .builder();*/
   }
 }

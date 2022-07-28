@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:levv/model/bo/usuario/celular.dart';
-import 'package:levv/model/bo/utilizador/acompanhador.dart';
 import 'package:levv/view/cadastrar/acompanhadorDePedido/cadastrador_de_usuario.dart';
 import 'package:levv/view/frontend/colors_levv.dart';
 import 'package:levv/view/frontend/text_levv.dart';
@@ -124,12 +123,14 @@ class _TelaCadastrarAcompanhadorState extends State<TelaCadastrarAcompanhador> {
         .build();
 
     //todo
+    /*
     _usuario = AcompanhadorBuilder.instance
         .celular(objeto)
         .semStatus()
         .tipoDeUsuario()
         .semLista()
         .build();
+    */
   }
 
   //3
